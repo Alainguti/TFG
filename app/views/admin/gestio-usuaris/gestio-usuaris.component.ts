@@ -4,9 +4,7 @@ import {AngularFireAuth} from "@angular/fire/compat/auth";
 import {AuthenticationService} from "../../../services/authentication.service";
 import {FirebaseService} from "../../../services/firebase.service";
 import {Usuari} from "../../../model/usuari";
-import * as _ from "underscore";
 import {FormControl, FormGroup, Validators} from "@angular/forms";
-import {updateCurrentUser} from "@angular/fire/auth";
 
 @Component({
   selector: 'app-gestio-usuaris',
@@ -55,7 +53,8 @@ export class GestioUsuarisComponent implements OnInit {
           name: this.registerForm.value.name,
           second_name: this.registerForm.value.second_name,
           third_name: this.registerForm.value.third_name,
-          rol: this.registerForm.value.rol
+          rol: this.registerForm.value.rol,
+          sala: -1
         }
         this.fbService.addUser(user).then(() => {
           this.authService.signOut()

@@ -38,7 +38,8 @@ export class RegisterComponent implements OnInit {
       name: '',
       second_name: '',
       third_name: '',
-      rol: 'estudiant'
+      rol: 'estudiant',
+      sala: -1
     }
   }
 
