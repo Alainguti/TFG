@@ -1,0 +1,66 @@
+<app-navbar></app-navbar>
+<div class="container">
+  <div class="row" style="margin-top: 20px">
+    <div class="col"></div>
+    <div class="col-md-3">
+      <h3>Administrador</h3>
+        <ng-container *ngFor="let usuari of usuaris">
+          <li *ngIf="usuari.rol === 'admin'">{{usuari.name}} {{usuari.second_name}} {{usuari.third_name}}</li>
+        </ng-container>
+    </div>
+    <div class="col-md-3">
+      <h3>Mentors</h3>
+      <ng-container *ngFor="let usuari of usuaris">
+        <li *ngIf="usuari.rol === 'mentor'">{{usuari.name}} {{usuari.second_name}} {{usuari.third_name}}</li>
+      </ng-container>
+    </div>
+    <div class="col-md-3">
+      <h3>Estudiants</h3>
+      <ng-container *ngFor="let usuari of usuaris">
+        <li *ngIf="usuari.rol === 'estudiant'">{{usuari.name}} {{usuari.second_name}} {{usuari.third_name}}</li>
+      </ng-container>
+    </div>
+    <div class="col"></div>
+  </div>
+</div>
+<div>
+  <div class="row justify-content-center" style="margin-top: 20px">
+    <div class="col"></div>
+    <div class="col-md-4 align-self-center" style="border: 1px solid black">
+      <div style="padding: 20px">
+        <h2 class="text-center">Registrar usuari</h2>
+        <form [formGroup]="registerForm" (ngSubmit)="createUser()" novalidate>
+          <div class="mb-3">
+            <label>Nom</label>
+            <input class="form-control" formControlName="name">
+          </div>
+          <div class="mb-3">
+            <label>Primer cognom</label>
+            <input class="form-control" formControlName="second_name">
+          </div>
+          <div class="mb-3">
+            <label>Segon cognom</label>
+            <input class="form-control" formControlName="third_name">
+          </div>
+          <div class="mb-3">
+            <label>Correu electrònic</label>
+            <input type="email" class="form-control" formControlName="email">
+          </div>
+          <div class="mb-3">
+            <label>Contrasenya</label>
+            <input type="password" class="form-control" formControlName="password">
+          </div>
+          <div class="mb-3">
+            <label>Rol</label>
+            <select class="form-control" formControlName="rol">
+              <option>estudiant</option>
+              <option>mentor</option>
+            </select>
+          </div>
+          <button type="submit" class="btn btn-primary" style="margin: 0 auto; display: block" [disabled]="!registerForm.valid">Registra</button>
+        </form>
+      </div>
+    </div>
+    <div class="col"></div>
+  </div>
+</div>
