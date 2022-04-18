@@ -1,6 +1,7 @@
 <ng-container *ngIf="user">
   <app-navbar></app-navbar>
   <div style="padding-top: 20px" *ngIf="user.rol === 'admin'; else estudiant">
+    <div class="container">
       <h1 class="text-center">Panell d'administrador</h1>
       <div class="row">
         <div class="col-1"></div>
@@ -12,7 +13,7 @@
         </div>
         <div class="col-1"></div>
       </div>
-    <div class="row" style="padding-top: 40px">
+      <div class="row" style="padding-top: 40px">
       <div class="col"></div>
       <div class="col-md-3 align-self-center" style="border: 1px solid black">
         <div style="padding: 20px">
@@ -27,6 +28,7 @@
       <div class="col"></div>
     </div>
   </div>
+  </div>
   <ng-template #estudiant>
     <div *ngIf="user.rol === 'estudiant'; else mentor">
       <h3>User info:</h3>
@@ -34,7 +36,9 @@
       Rol: {{user.rol}}
     </div>
     <ng-template #mentor>
-
+      <h3>User info:</h3>
+      Nom: {{user.name}} {{user.second_name}} {{user.third_name}} <br>
+      Rol: {{user.rol}}
     </ng-template>
   </ng-template>
 </ng-container>
