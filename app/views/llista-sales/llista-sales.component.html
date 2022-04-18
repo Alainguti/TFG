@@ -1,0 +1,34 @@
+<ng-container *ngIf="user">
+<app-navbar></app-navbar>
+<div class="container" style="padding-top: 20px">
+  <div class="row">
+    <div class="col"></div>
+    <div class="col-6 text-center"><h2 style="justify-content: center">Llistat de sales</h2></div>
+    <div class="col"></div>
+  </div>
+  <div class="row">
+    <ng-container *ngFor="let sala of salas">
+      <div class="col-4"></div>
+      <div class="col-4" style="margin-bottom: 20px;border: 1px solid black">
+        <div>
+          <h3 class="text-center">Sala {{sala.id}}</h3>
+          <p style="margin: 0;font-weight: bold">Mentor: {{sala.mentor}}</p>
+          <p style="font-weight: bold;margin: 0">Alumnes:</p>
+          <ng-container *ngFor="let i of users_list">
+            <ng-container *ngIf="i.sala === sala.id">
+              <p class="text-center" style="margin: 0">{{i.name}} {{i.second_name}} {{i.third_name}}</p>
+            </ng-container>
+          </ng-container>
+          <ng-container *ngIf="user.sala < 0; else administrar">
+            <button (click)="entrarSala(sala.id)" style="margin:0 auto;display:block">Entrar</button>
+          </ng-container>
+          <ng-template #administrar>
+            <button *ngIf="sala.id === user.sala" (click)="sortirSala()" style="margin:0 auto;display:block">Sortir</button>
+          </ng-template>
+        </div>
+      </div>
+      <div class="col-4"></div>
+    </ng-container>
+  </div>
+</div>
+</ng-container>

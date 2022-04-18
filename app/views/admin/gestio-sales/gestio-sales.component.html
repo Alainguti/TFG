@@ -1,19 +1,24 @@
 <app-navbar></app-navbar>
 <div class="container">
-<div class="container">
   <div class="row" style="margin-top: 20px">
     <div class="col-lg-4 col-md-3" style="margin-bottom: 20px;border: 1px solid black" *ngFor="let sala of salas">
       <div>
         <h3 class="text-center">Sala {{sala.id}}</h3>
-        <p class="text-center" style="margin: 0">Mentor: {{sala.mentor}}</p>
-        <p class="text-center" style="margin: 0">Alumno x</p>
+        <p style="margin: 0;font-weight: bold">Mentor: {{sala.mentor}}</p>
+        <p style="font-weight: bold;margin: 0">Alumnes:</p>
+        <ng-container *ngFor="let i of users_list">
+          <ng-container *ngIf="i.sala === sala.id">
+            <p class="text-center" style="margin: 0">{{i.name}} {{i.second_name}} {{i.third_name}} <button (click)="deleteUserFromGroup(i.uid)">Expulsar</button></p>
+          </ng-container>
+        </ng-container>
       </div>
     </div>
   </div>
 </div>
-<div class="row">
-  <div class="col-5"></div>
-  <button (click)="crearSala()" class="col-2">Crear sala</button>
-  <div class="col-5"></div>
-</div>
+<div class="container">
+  <div class="row">
+    <div class="col-5"></div>
+    <button (click)="crearSala()" class="col-2">Crear sala</button>
+    <div class="col-5"></div>
+  </div>
 </div>

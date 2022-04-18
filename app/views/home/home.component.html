@@ -33,7 +33,20 @@
     <div *ngIf="user.rol === 'estudiant'; else mentor">
       <h3>User info:</h3>
       Nom: {{user.name}} {{user.second_name}} {{user.third_name}} <br>
-      Rol: {{user.rol}}
+      Rol: {{user.rol}} <br>
+      Sala: {{user.sala}}
+      <div class="container">
+        <div class="row">
+          <div class="col-1"></div>
+          <div class="col-5">
+            <button [routerLink]="['/sales']" style="width: 100%">Sales</button>
+          </div>
+          <div class="col-5">
+            <button [routerLink]="['/la_meva_sala']" style="width: 100%">La meva sala</button>
+          </div>
+          <div class="col-1"></div>
+        </div>
+      </div>
     </div>
     <ng-template #mentor>
       <h3>User info:</h3>

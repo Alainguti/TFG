@@ -3,9 +3,9 @@ import {AuthenticationService} from "../../../services/authentication.service";
 import {Router} from "@angular/router";
 import {AngularFireAuth} from "@angular/fire/compat/auth";
 import {FirebaseService} from "../../../services/firebase.service";
-import {Observable} from "rxjs";
 import {Sala} from "../../../model/sala";
 import * as _ from 'underscore'
+import {Usuari} from "../../../model/usuari";
 
 @Component({
   selector: 'app-gestio-sales',
@@ -14,6 +14,7 @@ import * as _ from 'underscore'
 })
 export class GestioSalesComponent implements OnInit {
 
+  users_list: Usuari[] = []
   salas: Sala[] = []
 
   constructor(
@@ -35,10 +36,16 @@ export class GestioSalesComponent implements OnInit {
         this.salas = _.sortBy(this.salas, 'id')
       })
     })
+    this.fbService.getUsuaris().subscribe((users: any) => {
+      users.forEach((user: any) => {
+        if(user.data().rol == "estudiant"){
+          this.users_list.push(user.data())
+        }
+      })
+    })
   }
 
   crearSala(){
-    console.log(this.salas.length)
     const len = this.salas.length + 1
     const sala: Sala = {id: len, mentor:''}
     this.fbService.crearSala(sala).then(() => {
@@ -48,6 +55,17 @@ export class GestioSalesComponent implements OnInit {
     )
       .catch(function(error) {
         console.error("Error al crear la sala.", error);
+      });
+  }
+
+  deleteUserFromGroup(uid: string) {
+    this.fbService.deleteUserFromGroup(uid).then(() => {
+        console.log('Eliminat correctament.')
+        window.location.reload()
+      }
+    )
+      .catch(function(error) {
+        console.error("Error a l'eliminar.", error);
       });
   }
 

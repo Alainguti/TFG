@@ -39,6 +39,15 @@ export class FirebaseService {
   }
 
   setCode(code: string) {
-    return this.firebase.collection('Credenciales').doc('cred').set({codi: code})
+    return this.firebase.collection('Credenciales').doc('cred').update({codi: code})
   }
+
+  addUserToGroup(sala_id: number, user_uid: string) {
+    return this.firebase.collection('Usuaris').doc(user_uid).update({sala: sala_id})
+  }
+
+  deleteUserFromGroup(uid: string) {
+    return this.firebase.collection('Usuaris').doc(uid).update({sala: -1})
+  }
+
 }

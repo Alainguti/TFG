@@ -18,6 +18,8 @@ import {AuthenticationService} from "./services/authentication.service";
 import { NavbarComponent } from './components/navbar/navbar.component';
 import { GestioSalesComponent } from './views/admin/gestio-sales/gestio-sales.component';
 import { GestioUsuarisComponent } from './views/admin/gestio-usuaris/gestio-usuaris.component';
+import { LlistaSalesComponent } from './views/llista-sales/llista-sales.component';
+import { SalaUsuariComponent } from './views/sala-usuari/sala-usuari.component';
 
 @NgModule({
   declarations: [
@@ -27,7 +29,9 @@ import { GestioUsuarisComponent } from './views/admin/gestio-usuaris/gestio-usua
     RegisterComponent,
     NavbarComponent,
     GestioSalesComponent,
-    GestioUsuarisComponent
+    GestioUsuarisComponent,
+    LlistaSalesComponent,
+    SalaUsuariComponent
   ],
   imports: [
     BrowserModule,
