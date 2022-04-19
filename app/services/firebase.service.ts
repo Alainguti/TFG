@@ -42,12 +42,20 @@ export class FirebaseService {
     return this.firebase.collection('Credenciales').doc('cred').update({codi: code})
   }
 
+  setMentor(uid: string, sala_id: number) {
+    return this.firebase.collection('Sales').doc(sala_id.toString()).update({mentor: uid})
+  }
+
   addUserToGroup(sala_id: number, user_uid: string) {
     return this.firebase.collection('Usuaris').doc(user_uid).update({sala: sala_id})
   }
 
   deleteUserFromGroup(uid: string) {
     return this.firebase.collection('Usuaris').doc(uid).update({sala: -1})
+  }
+
+  deleteMentorFromGroup(sala_id: number) {
+    return this.firebase.collection('Sales').doc(sala_id.toString()).update({mentor: ''})
   }
 
 }

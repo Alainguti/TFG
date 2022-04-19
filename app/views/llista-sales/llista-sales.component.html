@@ -12,11 +12,12 @@
       <div class="col-4" style="margin-bottom: 20px;border: 1px solid black">
         <div>
           <h3 class="text-center">Sala {{sala.id}}</h3>
-          <p style="margin: 0;font-weight: bold">Mentor: {{sala.mentor}}</p>
+          <p style="margin: 0;font-weight: bold">Mentor: </p><p>{{mentors_dict.get(sala.mentor)}}</p>
           <p style="font-weight: bold;margin: 0">Alumnes:</p>
           <ng-container *ngFor="let i of users_list">
             <ng-container *ngIf="i.sala === sala.id">
-              <p class="text-center" style="margin: 0">{{i.name}} {{i.second_name}} {{i.third_name}}</p>
+              <p style="margin:0;font-weight:bold" *ngIf="user.uid === i.uid">{{i.name}} {{i.second_name}} {{i.third_name}}</p>
+              <p style="margin:0" *ngIf="user.uid != i.uid">{{i.name}} {{i.second_name}} {{i.third_name}}</p>
             </ng-container>
           </ng-container>
           <ng-container *ngIf="user.sala < 0; else administrar">

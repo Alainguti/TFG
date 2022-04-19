@@ -6,6 +6,7 @@ import {FirebaseService} from "../../../services/firebase.service";
 import {Sala} from "../../../model/sala";
 import * as _ from 'underscore'
 import {Usuari} from "../../../model/usuari";
+import {FormControl, FormGroup, Validators} from "@angular/forms";
 
 @Component({
   selector: 'app-gestio-sales',
@@ -16,13 +17,20 @@ export class GestioSalesComponent implements OnInit {
 
   users_list: Usuari[] = []
   salas: Sala[] = []
+  mentors_list: any[] = []
+  mentorForm: FormGroup
+  mentors_dict: Map<string, string> = new Map
 
   constructor(
     private router: Router,
     private fireAuth: AngularFireAuth,
     private authService: AuthenticationService,
     private fbService: FirebaseService
-  ) { }
+  ) {
+    this.mentorForm = new FormGroup({
+      nom: new FormControl('', [Validators.required])
+    });
+  }
 
   ngOnInit(): void {
     this.authService.currentUser.subscribe(user => {
@@ -40,6 +48,10 @@ export class GestioSalesComponent implements OnInit {
       users.forEach((user: any) => {
         if(user.data().rol == "estudiant"){
           this.users_list.push(user.data())
+        }
+        else if(user.data().rol == "mentor"){
+          this.mentors_list.push(user.data())
+          this.mentors_dict.set(user.data().uid,user.data().name + ' ' + user.data().second_name + ' ' + user.data().third_name)
         }
       })
     })
@@ -67,6 +79,32 @@ export class GestioSalesComponent implements OnInit {
       .catch(function(error) {
         console.error("Error a l'eliminar.", error);
       });
+  }
+
+  deleteMentorFromGroup(sala_id: number) {
+    this.fbService.deleteMentorFromGroup(sala_id).then(() => {
+        console.log('Eliminat correctament.')
+        window.location.reload()
+      }
+    )
+      .catch(function(error) {
+        console.error("Error a l'eliminar.", error);
+      });
+  }
+
+  assignaMentor(sala_id: number) {
+    for(let entry of this.mentors_dict.entries()) {
+      if(entry[1] === this.mentorForm.value.nom){
+        this.fbService.setMentor(entry[0], sala_id).then(() => {
+            console.log('Assignat correctament.')
+            window.location.reload()
+          }
+        )
+          .catch(function(error) {
+            console.error("Error al assignar.", error);
+          });
+      }
+    }
   }
 
 }

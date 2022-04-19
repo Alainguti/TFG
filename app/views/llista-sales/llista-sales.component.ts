@@ -18,6 +18,8 @@ export class LlistaSalesComponent implements OnInit {
   user?: Usuari
   users_list: Usuari[] = []
   salas: Sala[] = []
+  mentors_list: any[] = []
+  mentors_dict: Map<string, string> = new Map
 
   constructor(
     private router: Router,
@@ -49,6 +51,10 @@ export class LlistaSalesComponent implements OnInit {
       users.forEach((user: any) => {
         if(user.data().rol == "estudiant"){
           this.users_list.push(user.data())
+        }
+        else if(user.data().rol == "mentor"){
+          this.mentors_list.push(user.data())
+          this.mentors_dict.set(user.data().uid,user.data().name + ' ' + user.data().second_name + ' ' + user.data().third_name)
         }
       })
     })

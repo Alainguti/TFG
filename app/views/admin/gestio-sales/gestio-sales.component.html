@@ -4,7 +4,18 @@
     <div class="col-lg-4 col-md-3" style="margin-bottom: 20px;border: 1px solid black" *ngFor="let sala of salas">
       <div>
         <h3 class="text-center">Sala {{sala.id}}</h3>
-        <p style="margin: 0;font-weight: bold">Mentor: {{sala.mentor}}</p>
+        <p style="margin: 0;font-weight: bold">Mentor:</p>
+        <ng-container *ngIf="sala.mentor === '';else mentor">
+          <form [formGroup]="mentorForm" (ngSubmit)="assignaMentor(sala.id)" novalidate>
+            <select class="form-control" formControlName="nom">
+              <option *ngFor="let mentor of mentors_list">{{mentor.name}} {{mentor.second_name}} {{mentor.third_name}}</option>
+            </select>
+            <button type="submit" class="btn btn-primary" style="margin: 0 auto; display: block" [disabled]="!mentorForm.valid">Assigna</button>
+          </form>
+        </ng-container>
+        <ng-template #mentor>
+          <p class="text-center" style="margin: 0">{{mentors_dict.get(sala.mentor)}} <button (click)="deleteMentorFromGroup(sala.id)">Treure</button></p>
+        </ng-template>
         <p style="font-weight: bold;margin: 0">Alumnes:</p>
         <ng-container *ngFor="let i of users_list">
           <ng-container *ngIf="i.sala === sala.id">
