@@ -33,6 +33,15 @@ export class GestioUsuarisComponent implements OnInit {
   }
 
   ngOnInit(): void {
+    this.fireAuth.authState.subscribe(cred => {
+      if(cred?.uid) {
+        this.fbService.getUser(cred?.uid).subscribe(data => {
+          if(data.data().rol != 'admin'){
+            this.router.navigate([''])
+          }
+        })
+      }
+    })
     this.authService.currentUser.subscribe(user => {
       if(!user){
         this.router.navigate(['/login'])
