@@ -34,6 +34,10 @@ export class FirebaseService {
     return this.firebase.collection('Sales').get()
   }
 
+  getSala(sala_id:number) {
+    return this.firebase.collection('Sales').doc(sala_id.toString()).get()
+  }
+
   crearSala(sala:Sala) {
     return this.firebase.collection('Sales').doc(sala.id.toString()).set(sala)
   }
