@@ -23,7 +23,7 @@ export class GestioUsuarisComponent implements OnInit {
     private fbService: FirebaseService
   ) {
     this.registerForm = new FormGroup({
-      email: new FormControl('', [Validators.required, Validators.email]),
+      mail: new FormControl('', [Validators.required, Validators.email]),
       password: new FormControl('', [Validators.required]),
       name: new FormControl('', [Validators.required]),
       second_name: new FormControl('', [Validators.required]),
@@ -55,7 +55,7 @@ export class GestioUsuarisComponent implements OnInit {
   }
 
   createUser(){
-    this.authService.signUpWithEmail(this.registerForm.value.email, this.registerForm.value.password, this.registerForm.value.name).then(cred => {
+    this.authService.signUpWithEmail(this.registerForm.value.mail, this.registerForm.value.password, this.registerForm.value.name).then(cred => {
       if(cred.user){
         const user: Usuari = {
           uid: cred.user.uid,
@@ -63,7 +63,8 @@ export class GestioUsuarisComponent implements OnInit {
           second_name: this.registerForm.value.second_name,
           third_name: this.registerForm.value.third_name,
           rol: this.registerForm.value.rol,
-          sala: -1
+          sala: -1,
+          mail: this.registerForm.value.mail
         }
         this.fbService.addUser(user).then(() => {
           this.authService.signOut()

@@ -20,7 +20,8 @@ export class SalaUsuariComponent implements OnInit {
     second_name:'',
     third_name:'',
     rol:'',
-    sala: -1
+    sala: -1,
+    mail: ''
   }
 
   constructor(
@@ -64,7 +65,5 @@ export class SalaUsuariComponent implements OnInit {
       }
     })
   }
-
-  //funciones
 
 }

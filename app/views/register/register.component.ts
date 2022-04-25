@@ -26,7 +26,7 @@ export class RegisterComponent implements OnInit {
 
   ) {
     this.registerForm = new FormGroup({
-      email: new FormControl('', [Validators.required, Validators.email]),
+      mail: new FormControl('', [Validators.required, Validators.email]),
       password: new FormControl('', [Validators.required]),
       name: new FormControl('', [Validators.required]),
       second_name: new FormControl('', [Validators.required]),
@@ -39,7 +39,8 @@ export class RegisterComponent implements OnInit {
       second_name: '',
       third_name: '',
       rol: 'estudiant',
-      sala: -1
+      sala: -1,
+      mail: ''
     }
   }
 
@@ -51,12 +52,13 @@ export class RegisterComponent implements OnInit {
 
   createUser() {
     if(this.registerForm.value.code == this.code){
-      this.authService.signUpWithEmail(this.registerForm.value.email, this.registerForm.value.password, this.registerForm.value.name).then(cred => {
+      this.authService.signUpWithEmail(this.registerForm.value.mail, this.registerForm.value.password, this.registerForm.value.name).then(cred => {
         if(cred.user) {
           this.user.name = this.registerForm.value.name
           this.user.second_name = this.registerForm.value.second_name
           this.user.third_name = this.registerForm.value.third_name
           this.user.uid = cred.user.uid
+          this.user.mail = this.registerForm.value.mail
           this.fbService.addUser(this.user).then(() =>
             this.router.navigate(['/login'])
           )

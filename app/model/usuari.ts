@@ -5,4 +5,5 @@ export interface Usuari {
   third_name: string
   rol: string
   sala: number
+  mail: string
 }
