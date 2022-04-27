@@ -35,7 +35,9 @@ export class LoginComponent implements OnInit {
   signIn() {
     this.authService.signInWithEmail(this.loginForm.value.email, this.loginForm.value.password).then(() => {
       this.router.navigate([''])
-    })
+    }).catch(function() {
+      window.alert("Credencials incorrectes");
+    });
   }
 
 }

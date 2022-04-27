@@ -20,6 +20,9 @@ import { GestioSalesComponent } from './views/admin/gestio-sales/gestio-sales.co
 import { GestioUsuarisComponent } from './views/admin/gestio-usuaris/gestio-usuaris.component';
 import { LlistaSalesComponent } from './views/llista-sales/llista-sales.component';
 import { SalaUsuariComponent } from './views/sala-usuari/sala-usuari.component';
+import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
+import {MatFormFieldModule} from "@angular/material/form-field";
+import {MatInputModule} from "@angular/material/input";
 
 @NgModule({
   declarations: [
@@ -41,7 +44,10 @@ import { SalaUsuariComponent } from './views/sala-usuari/sala-usuari.component';
     AngularFirestoreModule,
     AngularFireStorageModule,
     AngularFireDatabaseModule,
-    ReactiveFormsModule
+    ReactiveFormsModule,
+    BrowserAnimationsModule,
+    MatFormFieldModule,
+    MatInputModule
   ],
   providers: [FirebaseService, AuthenticationService],
   bootstrap: [AppComponent]

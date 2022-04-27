@@ -27,7 +27,7 @@ export class RegisterComponent implements OnInit {
   ) {
     this.registerForm = new FormGroup({
       mail: new FormControl('', [Validators.required, Validators.email]),
-      password: new FormControl('', [Validators.required]),
+      password: new FormControl('', [Validators.required, Validators.minLength(6)]),
       name: new FormControl('', [Validators.required]),
       second_name: new FormControl('', [Validators.required]),
       third_name: new FormControl(''),
@@ -63,10 +63,12 @@ export class RegisterComponent implements OnInit {
             this.router.navigate(['/login'])
           )
         }
-      })
+      }).catch(function() {
+        window.alert("Dades incorrectes");
+      });
     }
     else{
-      console.log("Codi de curs incorrecte")
+      window.alert("Codi de curs incorrecte")
     }
   }
 
