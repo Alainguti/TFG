@@ -9,6 +9,7 @@
         <ng-container *ngIf="sala.mentor === '';else mentor">
           <form [formGroup]="mentorForm" (ngSubmit)="assignaMentor(sala.id)" novalidate>
             <select class="form-select" formControlName="nom" autofocus>
+              <option></option>
               <option *ngFor="let mentor of mentors_list">{{mentor.name}} {{mentor.second_name}} {{mentor.third_name}}</option>
             </select>
             <div style="margin-top: 5px; margin-bottom: 5px">
