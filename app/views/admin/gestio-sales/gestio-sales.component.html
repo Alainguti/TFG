@@ -5,22 +5,28 @@
     <div class="col-lg-4 col-md-3" style="margin-bottom: 20px;border: 1px solid black" *ngFor="let sala of salas">
       <div>
         <h3 class="text-center">Sala {{sala.id}}</h3>
-        <p style="margin: 0;font-weight: bold">Mentor:</p>
+        <h5 style="margin: 0;font-weight: bold">Mentor:</h5>
         <ng-container *ngIf="sala.mentor === '';else mentor">
           <form [formGroup]="mentorForm" (ngSubmit)="assignaMentor(sala.id)" novalidate>
-            <select class="form-control" formControlName="nom">
+            <select class="form-select" formControlName="nom" autofocus>
               <option *ngFor="let mentor of mentors_list">{{mentor.name}} {{mentor.second_name}} {{mentor.third_name}}</option>
             </select>
-            <button type="submit" class="btn btn-primary" style="margin: 0 auto; display: block" [disabled]="!mentorForm.valid">Assigna</button>
+            <div style="margin-top: 5px; margin-bottom: 5px">
+              <button type="submit" class="btn btn-primary" style="margin: 0 auto; display: block" [disabled]="!mentorForm.valid">Assigna</button>
+            </div>
           </form>
         </ng-container>
         <ng-template #mentor>
-          <p class="text-center" style="margin: 0">{{mentors_dict.get(sala.mentor)}} <button (click)="deleteMentorFromGroup(sala.id)">Treure</button></p>
+          <div style="margin-bottom: 10px;margin-top: 3px">
+            <p class="" style="margin: 0">{{mentors_dict.get(sala.mentor)}} <button style="float: right;display: block" class="btn btn-danger btn-sm" (click)="deleteMentorFromGroup(sala.id)">Expulsar</button></p>
+          </div>
         </ng-template>
-        <p style="font-weight: bold;margin: 0">Alumnes:</p>
+        <h5 style="font-weight: bold;margin: 0">Alumnes:</h5>
         <ng-container *ngFor="let i of users_list">
           <ng-container *ngIf="i.sala === sala.id">
-            <p class="text-center" style="margin: 0">{{i.name}} {{i.second_name}} {{i.third_name}} <button (click)="deleteUserFromGroup(i.uid)">Expulsar</button></p>
+            <div style="margin-bottom: 10px;margin-top: 10px">
+              <p class="" style="margin: 0">{{i.name}} {{i.second_name}} {{i.third_name}} <button style="float: right" class="btn btn-danger btn-sm" (click)="deleteUserFromGroup(i.uid)">Expulsar</button></p>
+            </div>
           </ng-container>
         </ng-container>
       </div>

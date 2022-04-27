@@ -3,7 +3,7 @@
 <div class="container" style="padding-top: 20px">
   <div class="row">
     <div class="col"></div>
-    <div class="col-6 text-center"><h2 style="justify-content: center">Llistat de sales</h2></div>
+    <div class="col-6 text-center"><h2>Llistat de sales</h2></div>
     <div class="col"></div>
   </div>
   <div class="row">
@@ -20,11 +20,13 @@
               <p style="margin:0" *ngIf="user.uid != i.uid">{{i.name}} {{i.second_name}} {{i.third_name}}</p>
             </ng-container>
           </ng-container>
-          <ng-container *ngIf="user.sala < 0; else administrar">
-            <button (click)="entrarSala(sala.id)" style="margin:0 auto;display:block">Entrar</button>
-          </ng-container>
+          <div style="margin-bottom: 5px; margin-top: 5px" *ngIf="user.sala < 0; else administrar">
+            <button class="btn btn-primary" (click)="entrarSala(sala.id)" style="margin:0 auto;display:block">Entrar</button>
+          </div>
           <ng-template #administrar>
-            <button *ngIf="sala.id === user.sala" (click)="sortirSala()" style="margin:0 auto;display:block">Sortir</button>
+            <div style="margin-bottom: 5px; margin-top: 5px">
+              <button class="btn btn-danger" *ngIf="sala.id === user.sala" (click)="sortirSala()" style="margin:0 auto;display:block">Sortir</button>
+            </div>
           </ng-template>
         </div>
       </div>
