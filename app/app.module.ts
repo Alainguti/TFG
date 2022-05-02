@@ -23,6 +23,7 @@ import { SalaUsuariComponent } from './views/sala-usuari/sala-usuari.component';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import {MatFormFieldModule} from "@angular/material/form-field";
 import {MatInputModule} from "@angular/material/input";
+import { GestioHorarisComponent } from './views/admin/gestio-horaris/gestio-horaris.component';
 
 @NgModule({
   declarations: [
@@ -34,7 +35,8 @@ import {MatInputModule} from "@angular/material/input";
     GestioSalesComponent,
     GestioUsuarisComponent,
     LlistaSalesComponent,
-    SalaUsuariComponent
+    SalaUsuariComponent,
+    GestioHorarisComponent
   ],
   imports: [
     BrowserModule,

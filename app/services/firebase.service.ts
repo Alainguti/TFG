@@ -1,7 +1,7 @@
 import { Injectable } from '@angular/core';
 import { AngularFirestore} from "@angular/fire/compat/firestore";
 import {Usuari} from "../model/usuari";
-import {map, Observable} from "rxjs";
+import {map, Observable, Timestamp} from "rxjs";
 import { collection, query, where, getDocs } from "firebase/firestore";
 import {Sala} from "../model/sala";
 
@@ -38,6 +38,10 @@ export class FirebaseService {
     return this.firebase.collection('Sales').doc(sala_id.toString()).get()
   }
 
+  getHoraris() {
+    return this.firebase.collection('Horaris').get()
+  }
+
   crearSala(sala:Sala) {
     return this.firebase.collection('Sales').doc(sala.id.toString()).set(sala)
   }
@@ -48,6 +52,10 @@ export class FirebaseService {
 
   setMentor(uid: string, sala_id: number) {
     return this.firebase.collection('Sales').doc(sala_id.toString()).update({mentor: uid})
+  }
+
+  setHorari(hora: Date) {
+    return this.firebase.collection('Horaris').add({hora: hora})
   }
 
   addUserToGroup(sala_id: number, user_uid: string) {

@@ -4,30 +4,42 @@
     <div class="container">
       <h1 class="text-center">Panell d'administrador</h1>
       <div class="row">
-        <div class="col-1"></div>
-        <div class="col-5">
+        <div class="col">
           <button class="btn btn-primary" [routerLink]="['/admin/gestio_sales']" style="width: 100%">Gestionar sales</button>
         </div>
-        <div class="col-5">
+        <div class="col">
           <button class="btn btn-primary" [routerLink]="['/admin/gestio_usuaris']" style="width: 100%">Gestionar usuaris</button>
         </div>
-        <div class="col-1"></div>
-      </div>
-      <div class="row" style="padding-top: 40px">
-      <div class="col"></div>
-      <div class="col-md-3 align-self-center" style="border: 1px solid black">
-        <div style="padding: 20px">
-        <h5>Codi del curs: "<span style="font-weight: normal">{{code}}</span>"</h5>
-        <form [formGroup]="codeForm" (ngSubmit)="changeCode()" novalidate>
-          <label>Nou codi</label>
-          <input class="form-control" formControlName="code"><br>
-          <button type="submit" class="btn btn-primary" style="margin: 0 auto;display: block;" [disabled]="!codeForm.valid">Guardar</button>
-        </form>
+        <div class="col">
+          <button class="btn btn-primary" [routerLink]="['/admin/gestio_horaris']" style="width: 100%">Gestionar horaris de reunions</button>
         </div>
       </div>
-      <div class="col"></div>
+      <div class="row" style="padding-top: 40px">
+        <div class="col"></div>
+        <div class="col-md-3 align-self-center" style="border: 1px solid black">
+          <div style="padding: 20px">
+          <h5>Codi del curs: "<span style="font-weight: normal">{{code}}</span>"</h5>
+          <form [formGroup]="codeForm" (ngSubmit)="changeCode()" novalidate>
+            <label>Nou codi</label>
+            <input class="form-control" formControlName="code"><br>
+            <button type="submit" class="btn btn-primary" style="margin: 0 auto;display: block;" [disabled]="!codeForm.valid">Guardar</button>
+          </form>
+          </div>
+        </div>
+        <div class="col"></div>
+      </div>
+      <div class="row">
+        <ng-container *ngFor="let horari of horaris">
+          <form>
+            <select>
+              <option>{{horari | date:'dd-MM-yyyy h:mm a'}}</option>
+            </select>
+            <input type="datetime-local">
+          </form>
+          <button (click)="setHorari()">Set Hora</button>
+        </ng-container>
+      </div>
     </div>
-  </div>
   </div>
   <ng-template #estudiant>
     <div *ngIf="user.rol === 'estudiant'; else mentor">

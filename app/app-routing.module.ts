@@ -7,6 +7,7 @@ import {GestioSalesComponent} from "./views/admin/gestio-sales/gestio-sales.comp
 import {GestioUsuarisComponent} from "./views/admin/gestio-usuaris/gestio-usuaris.component";
 import {LlistaSalesComponent} from "./views/llista-sales/llista-sales.component";
 import {SalaUsuariComponent} from "./views/sala-usuari/sala-usuari.component";
+import {GestioHorarisComponent} from "./views/admin/gestio-horaris/gestio-horaris.component";
 
 const routes: Routes = [
   { path: '', component: HomeComponent},
@@ -14,6 +15,7 @@ const routes: Routes = [
   { path: 'register', component: RegisterComponent},
   { path: 'admin/gestio_sales', component: GestioSalesComponent},
   { path: 'admin/gestio_usuaris', component: GestioUsuarisComponent},
+  { path: 'admin/gestio_horaris', component: GestioHorarisComponent},
   { path: 'sales', component: LlistaSalesComponent},
   { path: 'la_meva_sala', component: SalaUsuariComponent}
 
