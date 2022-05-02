@@ -2,16 +2,16 @@
   <app-navbar></app-navbar>
   <div style="padding-top: 20px" *ngIf="user.rol === 'admin'; else estudiant">
     <div class="container">
-      <h1 class="text-center">Panell d'administrador</h1>
+      <h1 class="text-center" style="margin-bottom: 20px">Panell d'administrador</h1>
       <div class="row">
         <div class="col">
-          <button class="btn btn-primary" [routerLink]="['/admin/gestio_sales']" style="width: 100%">Gestionar sales</button>
+          <button class="btn btn-primary" [routerLink]="['/admin/gestio_sales']" style="width: 100%;height: 50px">Gestionar sales</button>
         </div>
         <div class="col">
-          <button class="btn btn-primary" [routerLink]="['/admin/gestio_usuaris']" style="width: 100%">Gestionar usuaris</button>
+          <button class="btn btn-primary" [routerLink]="['/admin/gestio_usuaris']" style="width: 100%;height: 50px">Gestionar usuaris</button>
         </div>
         <div class="col">
-          <button class="btn btn-primary" [routerLink]="['/admin/gestio_horaris']" style="width: 100%">Gestionar horaris de reunions</button>
+          <button class="btn btn-primary" [routerLink]="['/admin/gestio_horaris']" style="width: 100%;height: 50px">Gestionar horaris de reunions</button>
         </div>
       </div>
       <div class="row" style="padding-top: 40px">
@@ -28,33 +28,31 @@
         </div>
         <div class="col"></div>
       </div>
-      <div class="row">
-        <ng-container *ngFor="let horari of horaris">
-          <form>
-            <select>
-              <option>{{horari | date:'dd-MM-yyyy h:mm a'}}</option>
-            </select>
-            <input type="datetime-local">
-          </form>
-          <button (click)="setHorari()">Set Hora</button>
-        </ng-container>
-      </div>
     </div>
   </div>
   <ng-template #estudiant>
     <div *ngIf="user.rol === 'estudiant'; else mentor">
-      <h3>User info:</h3>
-      Nom: {{user.name}} {{user.second_name}} {{user.third_name}} <br>
-      Rol: {{user.rol}} <br>
-      Sala: {{user.sala}}
       <div class="container">
+        <div class="row justify-content-center">
+          <div class="col-5" style="border: 1px solid black;margin: 20px">
+            <div style="margin: 20px">
+              <h3>Informació d'usuari:</h3>
+              <p style="font-weight: bold">Nom: <span style="font-weight: normal"> {{user.name}} {{user.second_name}} {{user.third_name}}</span></p>
+              <p style="font-weight: bold">Correu electrònic: <span style="font-weight: normal"> {{user.mail}}</span></p>
+              <p style="font-weight: bold">Rol: <span style="font-weight: normal"> {{user.rol.toUpperCase()}}</span></p>
+              <p style="font-weight: bold">Sala: <ng-container *ngIf="user.sala > 0; else no_sala">
+                <span style="font-weight: normal">{{user.sala}}</span></ng-container>
+                <ng-template #no_sala><span style="font-weight: normal">No pertanys a cap sala</span></ng-template></p>
+            </div>
+          </div>
+        </div>
         <div class="row">
           <div class="col-1"></div>
           <div class="col-5">
-            <button class="btn btn-primary" [routerLink]="['/sales']" style="width: 100%">Sales disponibles</button>
+            <button class="btn btn-primary" [routerLink]="['/sales']" style="width: 100%;height: 50px">Sales disponibles</button>
           </div>
           <div class="col-5">
-            <button class="btn btn-primary" [routerLink]="['/la_meva_sala']" style="width: 100%">La meva sala</button>
+            <button class="btn btn-primary" [routerLink]="['/la_meva_sala']" style="width: 100%;height: 50px">La meva sala</button>
           </div>
           <div class="col-1"></div>
         </div>

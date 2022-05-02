@@ -1,6 +1,6 @@
 <app-navbar></app-navbar>
 <div class="container">
-  <h1 class="text-center">Sales</h1>
+  <h1 class="text-center">Sales disponibles</h1>
   <div class="row" style="margin-top: 20px">
     <div class="col-lg-4 col-md-3" style="margin-bottom: 20px;border: 1px solid black" *ngFor="let sala of salas">
       <div>
@@ -33,11 +33,9 @@
       </div>
     </div>
   </div>
-</div>
-<div class="container">
   <div class="row">
     <div class="col-5"></div>
-    <button (click)="crearSala()" class="col-2 btn btn-primary">Crear sala</button>
+    <button (click)="crearSala()" class="col-2 btn btn-primary" style="margin-bottom: 20px">Crear sala</button>
     <div class="col-5"></div>
   </div>
 </div>

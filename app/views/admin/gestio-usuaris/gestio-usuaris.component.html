@@ -1,19 +1,21 @@
 <app-navbar></app-navbar>
-<div class="container">
+<div class="container" style="margin-bottom: 20px">
   <div class="row" style="margin-top: 20px">
-    <div class="col-6">
-      <h3>Administrador</h3>
-      <ng-container *ngFor="let usuari of usuaris">
-        <li *ngIf="usuari.rol === 'admin'">{{usuari.name}} {{usuari.second_name}} {{usuari.third_name}}</li>
-      </ng-container><br>
-      <h3>Mentors</h3>
-      <ng-container *ngFor="let usuari of usuaris">
-        <li *ngIf="usuari.rol === 'mentor'">{{usuari.name}} {{usuari.second_name}} {{usuari.third_name}} - {{usuari.mail}}</li>
-      </ng-container><br>
-      <h3>Estudiants</h3>
-      <ng-container *ngFor="let usuari of usuaris">
-        <li *ngIf="usuari.rol === 'estudiant'">{{usuari.name}} {{usuari.second_name}} {{usuari.third_name}} - {{usuari.mail}}</li>
-      </ng-container>
+    <div class="col-6" style="border: 1px solid black">
+      <div style="padding: 20px">
+        <h3>Administrador</h3>
+        <ng-container *ngFor="let usuari of usuaris">
+          <li *ngIf="usuari.rol === 'admin'">{{usuari.name}} {{usuari.second_name}} {{usuari.third_name}}</li>
+        </ng-container><br>
+        <h3>Mentors</h3>
+        <ng-container *ngFor="let usuari of usuaris">
+          <li *ngIf="usuari.rol === 'mentor'">{{usuari.name}} {{usuari.second_name}} {{usuari.third_name}} - {{usuari.mail}}</li>
+        </ng-container><br>
+        <h3>Estudiants</h3>
+        <ng-container *ngFor="let usuari of usuaris">
+          <li *ngIf="usuari.rol === 'estudiant'">{{usuari.name}} {{usuari.second_name}} {{usuari.third_name}} - {{usuari.mail}}</li>
+        </ng-container>
+      </div>
     </div>
     <div class="col-6" style="border: 1px solid black">
         <div style="padding: 20px">

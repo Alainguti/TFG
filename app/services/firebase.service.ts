@@ -4,6 +4,7 @@ import {Usuari} from "../model/usuari";
 import {map, Observable, Timestamp} from "rxjs";
 import { collection, query, where, getDocs } from "firebase/firestore";
 import {Sala} from "../model/sala";
+import firebase from "firebase/compat";
 
 @Injectable({
   providedIn: 'root'
@@ -68,6 +69,14 @@ export class FirebaseService {
 
   deleteMentorFromGroup(sala_id: number) {
     return this.firebase.collection('Sales').doc(sala_id.toString()).update({mentor: ''})
+  }
+
+  getHorariId(hora: Date) {
+    return this.firebase.collection('Horaris', ref => ref.where('hora', '==', hora)).get()
+  }
+
+  deleteHorari(id: string) {
+    return this.firebase.collection('Horaris').doc(id).delete()
   }
 
 }
