@@ -5,21 +5,25 @@
     <div class="container">
       <div class="row-cols-1">
         <div class="col" style="margin-bottom: 20px;border: 1px solid black">
-          <h5>Els teus companys:</h5>
-          <ul>
-            <ng-container *ngFor="let comp of companys">
-              <li>{{comp.name}} {{comp.second_name}} {{comp.third_name}} - {{comp.mail}}</li>
-            </ng-container>
-          </ul>
+          <div style="margin:10px">
+            <h5>Els teus companys:</h5>
+            <ul>
+              <ng-container *ngFor="let comp of companys">
+                <li>{{comp.name}} {{comp.second_name}} {{comp.third_name}} - {{comp.mail}}</li>
+              </ng-container>
+            </ul>
+          </div>
         </div>
         <div class="col" style="margin-bottom: 20px;border: 1px solid black">
-          <h5>El teu mentor:</h5>
-          <ng-container *ngIf="mentor.name != '';else no_mentor">
-            <ul><li>{{mentor.name}} {{mentor.second_name}} {{mentor.third_name}} - {{mentor.mail}}</li></ul>
-          </ng-container>
-          <ng-template #no_mentor>
-            <p>Encara no se us ha assignat cap mentor</p>
-          </ng-template>
+          <div style="margin:10px">
+            <h5>El teu mentor:</h5>
+            <ng-container *ngIf="mentor.name != '';else no_mentor">
+              <ul><li>{{mentor.name}} {{mentor.second_name}} {{mentor.third_name}} - {{mentor.mail}}</li></ul>
+            </ng-container>
+            <ng-template #no_mentor>
+              <p>Encara no se us ha assignat cap mentor</p>
+            </ng-template>
+          </div>
         </div>
       </div>
     </div>
