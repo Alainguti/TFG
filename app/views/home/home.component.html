@@ -59,9 +59,28 @@
       </div>
     </div>
     <ng-template #mentor>
-      <h3>User info:</h3>
-      Nom: {{user.name}} {{user.second_name}} {{user.third_name}} <br>
-      Rol: {{user.rol}}
+      <div class="container">
+        <div class="row justify-content-center">
+          <div class="col-5" style="border: 1px solid black;margin: 20px">
+            <div style="margin: 20px">
+              <h3>Informació d'usuari:</h3>
+              <p style="font-weight: bold">Nom: <span style="font-weight: normal"> {{user.name}} {{user.second_name}} {{user.third_name}}</span></p>
+              <p style="font-weight: bold">Correu electrònic: <span style="font-weight: normal"> {{user.mail}}</span></p>
+              <p style="font-weight: bold">Rol: <span style="font-weight: normal"> {{user.rol.toUpperCase()}}</span></p>
+            </div>
+          </div>
+        </div>
+        <div class="row">
+          <div class="col-1"></div>
+          <div class="col-5">
+            <button class="btn btn-primary" [routerLink]="['']" style="width: 100%;height: 50px">Les meves sales</button>
+          </div>
+          <div class="col-5">
+            <button class="btn btn-primary" [routerLink]="['']" style="width: 100%;height: 50px">Gestió d'horaris per reunions</button>
+          </div>
+          <div class="col-1"></div>
+        </div>
+      </div>
     </ng-template>
   </ng-template>
 </ng-container>
