@@ -1,1 +1,28 @@
-<p>sales-mentor works!</p>
+<app-navbar></app-navbar>
+<div class="container">
+  <h1 class="text-center">Les meves sales</h1>
+  <div class="row" style="margin-top: 20px">
+    <div class="col-4" style="margin-bottom: 20px;border: 1px solid black" *ngFor="let sala of salas">
+      <div>
+        <h3 class="text-center">Sala {{sala.id}}</h3>
+        <h5>Alumnes:</h5>
+        <ng-container *ngFor="let i of users_list">
+          <ng-container *ngIf="i.sala === sala.id">
+            <div style="margin-bottom: 10px;margin-top: 10px">
+              <p class="" style="margin: 0">{{i.name}} {{i.second_name}} {{i.third_name}} - {{i.mail}}</p>
+            </div>
+          </ng-container>
+        </ng-container>
+      </div>
+      <br>
+      <div>
+        <h5>Horaris escollits:</h5>
+        <ul>
+          <ng-container *ngFor="let horari of sala.horaris">
+            <li>{{getHora(horari) | date:'dd-MM-yyyy h:mm a'}}</li>
+          </ng-container>
+        </ul>
+      </div>
+    </div>
+  </div>
+</div>

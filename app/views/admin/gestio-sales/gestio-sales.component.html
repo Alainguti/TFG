@@ -22,7 +22,7 @@
             <p class="" style="margin: 0">{{mentors_dict.get(sala.mentor)}} <button style="float: right;display: block" class="btn btn-danger btn-sm" (click)="deleteMentorFromGroup(sala.id)">Expulsar</button></p>
           </div>
         </ng-template>
-        <h5 style="font-weight: bold;margin: 0">Alumnes:</h5>
+        <h5>Alumnes:</h5>
         <ng-container *ngFor="let i of users_list">
           <ng-container *ngIf="i.sala === sala.id">
             <div style="margin-bottom: 10px;margin-top: 10px">

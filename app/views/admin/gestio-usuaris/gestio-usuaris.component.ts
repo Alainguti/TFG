@@ -64,7 +64,8 @@ export class GestioUsuarisComponent implements OnInit {
           third_name: this.registerForm.value.third_name,
           rol: this.registerForm.value.rol,
           sala: -1,
-          mail: this.registerForm.value.mail
+          mail: this.registerForm.value.mail,
+          horaris: []
         }
         this.fbService.addUser(user).then(() => {
           this.authService.signOut()

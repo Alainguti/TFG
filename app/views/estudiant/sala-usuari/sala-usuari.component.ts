@@ -21,7 +21,8 @@ export class SalaUsuariComponent implements OnInit {
     third_name:'',
     rol:'',
     sala: -1,
-    mail: ''
+    mail: '',
+    horaris: []
   }
 
   constructor(

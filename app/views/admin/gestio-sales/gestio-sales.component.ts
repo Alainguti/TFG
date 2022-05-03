@@ -68,7 +68,7 @@ export class GestioSalesComponent implements OnInit {
 
   crearSala(){
     const len = this.salas.length + 1
-    const sala: Sala = {id: len, mentor:''}
+    const sala: Sala = {id: len, mentor:'', horaris: []}
     this.fbService.crearSala(sala).then(() => {
       console.log('Sala creada correctament.')
       window.location.reload()

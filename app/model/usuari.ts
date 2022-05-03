@@ -6,4 +6,5 @@ export interface Usuari {
   rol: string
   sala: number
   mail: string
+  horaris: []
 }
