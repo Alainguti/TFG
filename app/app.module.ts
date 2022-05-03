@@ -24,6 +24,8 @@ import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import {MatFormFieldModule} from "@angular/material/form-field";
 import {MatInputModule} from "@angular/material/input";
 import { GestioHorarisComponent } from './views/admin/gestio-horaris/gestio-horaris.component';
+import { HorarisMentorComponent } from './views/mentor/horaris-mentor/horaris-mentor.component';
+import { SalesMentorComponent } from './views/mentor/sales-mentor/sales-mentor.component';
 
 @NgModule({
   declarations: [
@@ -36,7 +38,9 @@ import { GestioHorarisComponent } from './views/admin/gestio-horaris/gestio-hora
     GestioUsuarisComponent,
     LlistaSalesComponent,
     SalaUsuariComponent,
-    GestioHorarisComponent
+    GestioHorarisComponent,
+    HorarisMentorComponent,
+    SalesMentorComponent
   ],
   imports: [
     BrowserModule,

@@ -8,6 +8,8 @@ import {GestioUsuarisComponent} from "./views/admin/gestio-usuaris/gestio-usuari
 import {LlistaSalesComponent} from "./views/estudiant/llista-sales/llista-sales.component";
 import {SalaUsuariComponent} from "./views/estudiant/sala-usuari/sala-usuari.component";
 import {GestioHorarisComponent} from "./views/admin/gestio-horaris/gestio-horaris.component";
+import {HorarisMentorComponent} from "./views/mentor/horaris-mentor/horaris-mentor.component";
+import {SalesMentorComponent} from "./views/mentor/sales-mentor/sales-mentor.component";
 
 const routes: Routes = [
   { path: '', component: HomeComponent},
@@ -16,6 +18,8 @@ const routes: Routes = [
   { path: 'admin/gestio_sales', component: GestioSalesComponent},
   { path: 'admin/gestio_usuaris', component: GestioUsuarisComponent},
   { path: 'admin/gestio_horaris', component: GestioHorarisComponent},
+  { path: 'mentor/gestio_horaris', component: HorarisMentorComponent},
+  { path: 'mentor/gestio_sales', component: SalesMentorComponent},
   { path: 'sales', component: LlistaSalesComponent},
   { path: 'la_meva_sala', component: SalaUsuariComponent}
 

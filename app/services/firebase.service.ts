@@ -59,6 +59,10 @@ export class FirebaseService {
     return this.firebase.collection('Horaris').add({hora: hora})
   }
 
+  setHorariMentor(horaris: Date[], uid: string) {
+    return this.firebase.collection('Usuaris').doc(uid).update({horaris: horaris})
+  }
+
   addUserToGroup(sala_id: number, user_uid: string) {
     return this.firebase.collection('Usuaris').doc(user_uid).update({sala: sala_id})
   }
