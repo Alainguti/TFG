@@ -58,7 +58,7 @@ export class HorarisMentorComponent implements OnInit {
 
   escollirHorari(horari: Date) {
     if(this.horaris_mentor){
-      this.horaris_mentor?.push(horari)
+      this.horaris_mentor.push(horari)
       this.fbService.setHorariMentor(this.horaris_mentor, this.uid).then(() => {
           console.log('Horari escollit correctament.')
         }
