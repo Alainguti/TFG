@@ -5,8 +5,8 @@ import {HomeComponent} from "./views/home/home.component";
 import {RegisterComponent} from "./views/register/register.component";
 import {GestioSalesComponent} from "./views/admin/gestio-sales/gestio-sales.component";
 import {GestioUsuarisComponent} from "./views/admin/gestio-usuaris/gestio-usuaris.component";
-import {LlistaSalesComponent} from "./views/llista-sales/llista-sales.component";
-import {SalaUsuariComponent} from "./views/sala-usuari/sala-usuari.component";
+import {LlistaSalesComponent} from "./views/estudiant/llista-sales/llista-sales.component";
+import {SalaUsuariComponent} from "./views/estudiant/sala-usuari/sala-usuari.component";
 import {GestioHorarisComponent} from "./views/admin/gestio-horaris/gestio-horaris.component";
 
 const routes: Routes = [

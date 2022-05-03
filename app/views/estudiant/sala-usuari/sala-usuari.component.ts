@@ -1,9 +1,9 @@
 import { Component, OnInit } from '@angular/core';
-import {Usuari} from "../../model/usuari";
+import {Usuari} from "../../../model/usuari";
 import {Router} from "@angular/router";
 import {AngularFireAuth} from "@angular/fire/compat/auth";
-import {AuthenticationService} from "../../services/authentication.service";
-import {FirebaseService} from "../../services/firebase.service";
+import {AuthenticationService} from "../../../services/authentication.service";
+import {FirebaseService} from "../../../services/firebase.service";
 
 @Component({
   selector: 'app-sala-usuari',
