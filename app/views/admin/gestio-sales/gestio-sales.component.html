@@ -2,10 +2,10 @@
 <div class="container">
   <h1 class="text-center">Sales disponibles</h1>
   <div class="row" style="margin-top: 20px">
-    <div class="col-lg-4 col-md-3" style="margin-bottom: 20px;border: 1px solid black" *ngFor="let sala of salas">
+    <div class="col-lg-4 col-md-3 border border-secondary rounded" style="margin-bottom: 20px;background-color: rgba(238, 238, 238,0.75)" *ngFor="let sala of salas">
       <div>
         <h3 class="text-center">Sala {{sala.id}}</h3>
-        <h5 style="margin: 0;font-weight: bold">Mentor:</h5>
+        <h5 style="margin: 0">Mentor:</h5>
         <ng-container *ngIf="sala.mentor === '';else mentor">
           <form [formGroup]="mentorForm" (ngSubmit)="assignaMentor(sala.id)" novalidate>
             <select class="form-select" formControlName="nom" autofocus>
@@ -13,7 +13,7 @@
               <option *ngFor="let mentor of mentors_list">{{mentor.name}} {{mentor.second_name}} {{mentor.third_name}}</option>
             </select>
             <div style="margin-top: 5px; margin-bottom: 5px">
-              <button type="submit" class="btn btn-primary" style="margin: 0 auto; display: block" [disabled]="!mentorForm.valid">Assigna</button>
+              <button type="submit" class="btn btn-secondary" style="margin: 0 auto; display: block" [disabled]="!mentorForm.valid">Assigna</button>
             </div>
           </form>
         </ng-container>
@@ -23,10 +23,10 @@
           </div>
         </ng-template>
         <h5>Alumnes:</h5>
-        <ng-container *ngFor="let i of users_list">
-          <ng-container *ngIf="i.sala === sala.id">
+        <ng-container *ngFor="let user of users_list">
+          <ng-container *ngIf="user.sala === sala.id">
             <div style="margin-bottom: 10px;margin-top: 10px">
-              <p class="" style="margin: 0">{{i.name}} {{i.second_name}} {{i.third_name}} <button style="float: right" class="btn btn-danger btn-sm" (click)="deleteUserFromGroup(i.uid)">Expulsar</button></p>
+              <p class="" style="margin: 0">{{user.name}} {{user.second_name}} {{user.third_name}} <button style="float: right" class="btn btn-danger btn-sm" (click)="deleteUserFromGroup(user.uid)">Expulsar</button></p>
             </div>
           </ng-container>
         </ng-container>
@@ -35,7 +35,7 @@
   </div>
   <div class="row">
     <div class="col-5"></div>
-    <button (click)="crearSala()" class="col-2 btn btn-primary" style="margin-bottom: 20px">Crear sala</button>
+    <button (click)="crearSala()" class="col-2 btn btn-secondary" style="margin-bottom: 20px">Crear sala</button>
     <div class="col-5"></div>
   </div>
 </div>

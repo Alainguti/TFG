@@ -3,7 +3,7 @@
   <div class="row">
     <h1 class="text-center">Gestió d'horaris per reunions</h1>
     <div class="col">
-      <div style="border: 1px solid black; margin-top: 20px">
+      <div class="border border-secondary rounded" style="margin-top: 20px;background-color: rgba(238, 238, 238,0.75)">
         <div style="margin: 10px">
           <h3>Horaris disponibles per reunions</h3>
           <ul>
@@ -17,12 +17,12 @@
       </div>
     </div>
     <div class="col">
-      <div style="border: 1px solid black; margin-top: 20px">
+      <div class="border border-secondary rounded" style="margin-top: 20px;background-color: rgba(238, 238, 238,0.75)">
         <div style="margin: 10px">
           <h3>Afegir horari per reunió</h3>
           <form [formGroup]="horariForm" (ngSubmit)="setHorari()" novalidate>
             <input type="datetime-local" class="form-control" formControlName="hora"><br>
-            <button type="submit" class="btn btn-primary" style="margin: 0 auto;display: block;" [disabled]="!horariForm.valid">Afegir</button>
+            <button type="submit" class="btn btn-secondary" style="margin: 0 auto;display: block;" [disabled]="!horariForm.valid">Afegir</button>
           </form>
         </div>
       </div>

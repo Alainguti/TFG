@@ -4,7 +4,7 @@
     <h1 class="text-center">Sala {{user.sala}}</h1>
     <div class="container">
       <div class="row-cols-1">
-        <div class="col" style="margin-bottom: 20px;border: 1px solid black">
+        <div class="col border border-3 border-secondary rounded" style="margin-bottom: 20px;background-color: rgba(238, 238, 238,0.75)">
           <div style="margin:10px">
             <h5>Els teus companys:</h5>
             <ul>
@@ -14,7 +14,7 @@
             </ul>
           </div>
         </div>
-        <div class="col" style="margin-bottom: 20px;border: 1px solid black">
+        <div class="col border border-3 border-secondary rounded" style="margin-bottom: 20px;background-color: rgba(238, 238, 238,0.75)">
           <div style="margin:10px">
             <h5>El teu mentor:</h5>
             <ng-container *ngIf="mentor.name != '';else no_mentor">

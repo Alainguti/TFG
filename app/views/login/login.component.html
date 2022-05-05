@@ -1,8 +1,8 @@
 <div class="container">
     <div class="row" style="margin-top: 20px">
       <div class="col"></div>
-      <div class="col-4 justify-content-center" style="border: 1px solid black">
-        <h4 class="text-center">Inici de sessió</h4>
+      <div class="col-4 justify-content-center border border-secondary rounded" style="background-color: rgba(238, 238, 238,0.75)">
+        <h4 class="text-center" style="margin-top: 20px">Inici de sessió</h4>
         <form [formGroup]="loginForm" (ngSubmit)="signIn()" novalidate>
           <div class="mb-3">
             <label>Correu electrònic</label>
@@ -13,8 +13,8 @@
             <input type="password" class="form-control" formControlName="password">
           </div>
           <div class="justify-content-center text-center" style="margin-bottom: 10px">
-            <button type="submit" class="btn btn-primary" style="margin: 0 auto; display: block" [disabled]="!loginForm.valid">Inicia sessió</button><br>
-            <p>No tens compte?</p><button class="btn btn-primary" style="margin: 0 auto; display: block" [routerLink]="['/register']">Registra't</button>
+            <button type="submit" class="btn btn-secondary" style="margin: 0 auto; display: block" [disabled]="!loginForm.valid">Inicia sessió</button><br>
+            <p>No tens compte?</p><button class="btn btn-secondary" style="margin: 0 auto; display: block" [routerLink]="['/register']">Registra't</button>
           </div>
         </form>
       </div>

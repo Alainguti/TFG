@@ -1,8 +1,8 @@
 <div class="container">
   <div class="row" style="margin-top: 20px">
     <div class="col"></div>
-    <div class="col-4 justify-content-center" style="border: 1px solid black">
-      <h4 class="text-center">Registre</h4>
+    <div class="col-4 justify-content-center border border-secondary rounded" style="background-color: rgba(238, 238, 238,0.75)">
+      <h4 class="text-center" style="margin-top: 20px">Registre</h4>
       <form [formGroup]="registerForm" (ngSubmit)="createUser()" novalidate>
         <div class="mb-3">
           <label>Nom</label>
@@ -29,7 +29,7 @@
           <input class="form-control" formControlName="code">
         </div>
         <div style="margin-bottom: 10px">
-          <button type="submit" class="btn btn-primary" style="margin: 0 auto; display: block" [disabled]="!registerForm.valid">Registra't</button>
+          <button type="submit" class="btn btn-secondary" style="margin: 0 auto; display: block" [disabled]="!registerForm.valid">Registra't</button>
         </div>
       </form>
     </div>

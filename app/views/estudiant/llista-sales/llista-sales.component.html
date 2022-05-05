@@ -8,8 +8,8 @@
   </div>
   <div class="row">
     <ng-container *ngFor="let sala of salas">
-      <div class="col-4"></div>
-      <div class="col-4" style="margin-bottom: 20px;border: 1px solid black">
+      <div class="col-1"></div>
+      <div class="col-4 border border-secondary rounded" style="margin-bottom: 20px;background-color: rgba(238, 238, 238,0.75)">
         <div>
           <h3 class="text-center">Sala {{sala.id}}</h3>
           <p style="margin: 0;font-weight: bold">Mentor: </p><p>{{mentors_dict.get(sala.mentor)}}</p>
@@ -21,7 +21,7 @@
             </ng-container>
           </ng-container>
           <div style="margin-bottom: 5px; margin-top: 5px" *ngIf="user.sala < 0; else administrar">
-            <button class="btn btn-primary" (click)="entrarSala(sala.id)" style="margin:0 auto;display:block">Entrar</button>
+            <button class="btn btn-secondary" (click)="entrarSala(sala.id)" style="margin:0 auto;display:block">Entrar</button>
           </div>
           <ng-template #administrar>
             <div style="margin-bottom: 5px; margin-top: 5px">
@@ -30,7 +30,7 @@
           </ng-template>
         </div>
       </div>
-      <div class="col-4"></div>
+      <div class="col-1"></div>
     </ng-container>
   </div>
 </div>
