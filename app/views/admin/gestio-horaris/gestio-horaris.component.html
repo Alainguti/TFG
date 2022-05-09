@@ -1,15 +1,15 @@
 <app-navbar></app-navbar>
 <div class="container">
   <div class="row">
-    <h1 class="text-center">Gestió d'horaris per reunions</h1>
+    <h1 class="text-center" style="margin-bottom: 20px;margin-top: 20px">Gestió d'horaris per reunions</h1>
     <div class="col">
       <div class="border border-secondary rounded" style="margin-top: 20px;background-color: rgba(238, 238, 238,0.75)">
         <div style="margin: 10px">
-          <h3>Horaris disponibles per reunions</h3>
+          <h3 class="text-center" style="margin:20px">Horaris disponibles per reunions</h3>
           <ul>
             <ng-container *ngFor="let horari of horaris">
               <div style="margin-bottom: 10px;margin-top: 3px">
-                <li>{{horari | date:'dd-MM-yyyy h:mm a'}}<button style="float: right;display: block" class="btn btn-danger btn-sm" (click)="eliminarHorari(horari)">Eliminar</button></li>
+                <li style="font-size: 18px">{{horari | date:'dd-MM-yyyy h:mm a'}}<button style="float: right;display: block" class="btn btn-danger btn-sm" (click)="eliminarHorari(horari)">Eliminar</button></li>
               </div>
             </ng-container>
           </ul>
@@ -19,7 +19,7 @@
     <div class="col">
       <div class="border border-secondary rounded" style="margin-top: 20px;background-color: rgba(238, 238, 238,0.75)">
         <div style="margin: 10px">
-          <h3>Afegir horari per reunió</h3>
+          <h3 class="text-center" style="margin-top:20px;margin-bottom: 20px">Afegir horari per reunió</h3>
           <form [formGroup]="horariForm" (ngSubmit)="setHorari()" novalidate>
             <input type="datetime-local" class="form-control" formControlName="hora"><br>
             <button type="submit" class="btn btn-secondary" style="margin: 0 auto;display: block;" [disabled]="!horariForm.valid">Afegir</button>

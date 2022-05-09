@@ -1,13 +1,13 @@
 <app-navbar></app-navbar>
 <div class="container">
-  <h1 class="text-center">Les meves sales</h1>
+  <h1 class="text-center" style="margin-top: 20px;margin-bottom: 20px">Les meves sales</h1>
   <div class="row" style="margin-top: 20px">
     <ng-container *ngFor="let sala of salas">
       <div class="col-1"></div>
       <div class="col-4 border border-secondary rounded" style="margin-bottom: 20px;background-color: rgba(238, 238, 238,0.75)">
         <div>
-          <h3 class="text-center">Sala {{sala.id}}</h3>
-          <h5>Alumnes:</h5>
+          <h3 class="text-center" style="margin-top: 10px;font-weight: bold">Sala {{sala.id}}</h3>
+          <h5 style="font-weight: bold">Alumnes:</h5>
           <ng-container *ngFor="let i of users_list">
             <ng-container *ngIf="i.sala === sala.id">
               <div style="margin-bottom: 10px;margin-top: 10px">
@@ -18,7 +18,7 @@
         </div>
         <br>
         <div>
-          <h5>Horaris escollits:</h5>
+          <h5 style="font-weight: bold">Horaris escollits:</h5>
           <ul>
             <ng-container *ngFor="let horari of sala.horaris">
               <li>{{getHora(horari) | date:'dd-MM-yyyy h:mm a'}}</li>

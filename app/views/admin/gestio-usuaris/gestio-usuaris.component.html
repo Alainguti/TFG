@@ -1,8 +1,8 @@
 <app-navbar></app-navbar>
-<div class="container" style="margin-bottom: 20px">
-  <h1 class="text-center">Gestió d'usuaris</h1>
+<div class="container">
+  <h1 class="text-center" style="margin-bottom: 20px;margin-top: 20px">Gestió d'usuaris</h1>
   <div class="row" style="margin-top: 20px">
-    <div class="col-5 border border-secondary rounded" style="background-color: rgba(238, 238, 238,0.75)">
+    <div class="col-5 border border-secondary rounded" style="background-color: rgba(238, 238, 238,0.75);margin-bottom: 20px">
       <div style="padding: 20px">
         <h3>Administrador</h3>
         <ng-container *ngFor="let usuari of usuaris">
@@ -19,7 +19,7 @@
       </div>
     </div>
     <div class="col-2"></div>
-    <div class="col-5 border border-secondary rounded" style="background-color: rgba(238, 238, 238,0.75)">
+    <div class="col-5 border border-secondary rounded" style="background-color: rgba(238, 238, 238,0.75);margin-bottom: 20px">
         <div style="padding: 20px">
           <h2 class="text-center">Registrar usuari</h2>
           <form [formGroup]="registerForm" (ngSubmit)="createUser()" novalidate>

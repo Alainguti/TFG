@@ -1,8 +1,12 @@
 <ng-container *ngIf="user">
   <app-navbar></app-navbar>
   <ng-container *ngIf="user.sala > 0; else no_sala">
-    <h1 class="text-center">Sala {{user.sala}}</h1>
-    <div class="container">
+    <div class="container" style="padding-top: 20px">
+      <div class="row" style="margin-bottom: 20px">
+        <div class="col"></div>
+        <div class="col-6 text-center"><h1>Sala {{user.sala}}</h1></div>
+        <div class="col"></div>
+      </div>
       <div class="row-cols-1">
         <div class="col border border-3 border-secondary rounded" style="margin-bottom: 20px;background-color: rgba(238, 238, 238,0.75)">
           <div style="margin:10px">
