@@ -36,10 +36,10 @@
         <div class="row justify-content-center">
           <div class="col-5 border border-3 border-secondary rounded" style="margin: 20px;background-color: rgba(238, 238, 238,0.75)">
             <div style="margin: 20px">
-              <h3>Informació d'usuari:</h3>
+              <h3 class="text-center" style="margin-bottom: 20px">Informació d'usuari</h3>
               <p style="font-weight: bold">Nom: <span style="font-weight: normal"> {{user.name}} {{user.second_name}} {{user.third_name}}</span></p>
               <p style="font-weight: bold">Correu electrònic: <span style="font-weight: normal"> {{user.mail}}</span></p>
-              <p style="font-weight: bold">Rol: <span style="font-weight: normal"> {{user.rol.toUpperCase()}}</span></p>
+              <p style="font-weight: bold">Rol: <span style="font-weight: normal"> {{user.rol.charAt(0).toUpperCase() + user.rol.slice(1)}}</span></p>
               <p style="font-weight: bold">Sala: <ng-container *ngIf="user.sala > 0; else no_sala">
                 <span style="font-weight: normal">{{user.sala}}</span></ng-container>
                 <ng-template #no_sala><span style="font-weight: normal">No pertanys a cap sala</span></ng-template></p>
@@ -63,10 +63,10 @@
         <div class="row justify-content-center">
           <div class="col-5 border border-3 border-secondary rounded" style="margin: 20px;background-color: rgba(238, 238, 238,0.75)">
             <div style="margin: 20px">
-              <h3>Informació d'usuari:</h3>
+              <h3 class="text-center" style="margin-bottom: 20px">Informació d'usuari</h3>
               <p style="font-weight: bold">Nom: <span style="font-weight: normal"> {{user.name}} {{user.second_name}} {{user.third_name}}</span></p>
               <p style="font-weight: bold">Correu electrònic: <span style="font-weight: normal"> {{user.mail}}</span></p>
-              <p style="font-weight: bold">Rol: <span style="font-weight: normal"> {{user.rol.toUpperCase()}}</span></p>
+              <p style="font-weight: bold">Rol: <span style="font-weight: normal"> {{user.rol.charAt(0).toUpperCase() + user.rol.slice(1)}}</span></p>
             </div>
           </div>
         </div>
