@@ -63,6 +63,10 @@ export class FirebaseService {
     return this.firebase.collection('Usuaris').doc(uid).update({horaris: horaris})
   }
 
+  setHorariSala(horaris: Date[], id: number) {
+    return this.firebase.collection('Sales').doc(id.toString()).update({horaris: horaris})
+  }
+
   addUserToGroup(sala_id: number, user_uid: string) {
     return this.firebase.collection('Usuaris').doc(user_uid).update({sala: sala_id})
   }
