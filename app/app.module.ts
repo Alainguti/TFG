@@ -26,6 +26,7 @@ import {MatInputModule} from "@angular/material/input";
 import { GestioHorarisComponent } from './views/admin/gestio-horaris/gestio-horaris.component';
 import { HorarisMentorComponent } from './views/mentor/horaris-mentor/horaris-mentor.component';
 import { SalesMentorComponent } from './views/mentor/sales-mentor/sales-mentor.component';
+import { GestioEstudiantsComponent } from './views/admin/gestio-estudiants/gestio-estudiants.component';
 
 @NgModule({
   declarations: [
@@ -40,7 +41,8 @@ import { SalesMentorComponent } from './views/mentor/sales-mentor/sales-mentor.c
     SalaUsuariComponent,
     GestioHorarisComponent,
     HorarisMentorComponent,
-    SalesMentorComponent
+    SalesMentorComponent,
+    GestioEstudiantsComponent
   ],
   imports: [
     BrowserModule,
