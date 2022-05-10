@@ -4,6 +4,8 @@ import {AngularFireAuth} from "@angular/fire/compat/auth";
 import {AuthenticationService} from "../../../services/authentication.service";
 import {FirebaseService} from "../../../services/firebase.service";
 import {Usuari} from "../../../model/usuari";
+import * as _ from 'underscore'
+import {FormControl, FormGroup, Validators} from "@angular/forms";
 
 @Component({
   selector: 'app-gestio-estudiants',
@@ -13,13 +15,19 @@ import {Usuari} from "../../../model/usuari";
 export class GestioEstudiantsComponent implements OnInit {
 
   estudiants_list: Usuari[] = []
+  sales_id_list:number[] = []
+  salaForm:FormGroup
 
   constructor(
     private router: Router,
     private fireAuth: AngularFireAuth,
     private authService: AuthenticationService,
     private fbService: FirebaseService
-  ) { }
+  ) {
+    this.salaForm = new FormGroup({
+      id: new FormControl('', [Validators.required])
+    });
+  }
 
   ngOnInit(): void {
     this.fireAuth.authState.subscribe(cred => {
@@ -42,7 +50,36 @@ export class GestioEstudiantsComponent implements OnInit {
           this.estudiants_list.push(doc.data())
         }
       })
+      this.estudiants_list = _.sortBy(this.estudiants_list, 'sala')
     })
+    this.fbService.getSales().subscribe((docs: any) => {
+      docs.forEach((doc: any) => {
+        this.sales_id_list.push(doc.data().id)
+      })
+      this.sales_id_list = _.sortBy(this.sales_id_list)
+    })
+  }
+
+  assignaSala(uid:string) {
+    this.fbService.addUserToGroup(this.salaForm.value.id, uid).then(() => {
+        console.log('Assignat correctament.')
+        window.location.reload()
+      }
+    )
+      .catch(function(error) {
+        console.error("Error al assignar.", error);
+      });
+  }
+
+  desassignarSala(uid:string) {
+    this.fbService.deleteUserFromGroup(uid).then(() => {
+        console.log('Eliminat correctament.')
+        window.location.reload()
+      }
+    )
+      .catch(function(error) {
+        console.error("Error a l'eliminar.", error);
+      });
   }
 
 }

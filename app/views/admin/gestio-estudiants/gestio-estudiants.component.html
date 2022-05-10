@@ -2,5 +2,40 @@
 <div class="container">
   <h1 class="text-center" style="margin-bottom: 20px;margin-top: 20px">Gestió d'estudiants</h1>
   <div class="row" style="margin-top: 20px">
+    <div class="col">
+      <table class="table table-bordered table-dark">
+        <thead>
+          <tr>
+            <th>Estudiant</th>
+            <th>Sala</th>
+          </tr>
+        </thead>
+        <tbody>
+          <ng-container *ngFor="let estudiant of estudiants_list">
+            <tr>
+              <td>{{estudiant.name}}  {{estudiant.second_name}}  {{estudiant.third_name}}</td>
+              <ng-container *ngIf="estudiant.sala > 0; else no_sala">
+                <td>{{estudiant.sala}} <button style="float: right;display: block" class="btn btn-danger btn-sm" (click)="desassignarSala(estudiant.uid)">Expulsar</button></td>
+              </ng-container>
+              <ng-template #no_sala>
+                <td>
+                  <form [formGroup]="salaForm" (ngSubmit)="assignaSala(estudiant.uid)" novalidate>
+                    <select class="form-select" formControlName="id" autofocus>
+                      <option></option>
+                      <ng-container *ngFor="let sala of sales_id_list">
+                        <option>{{sala}}</option>
+                      </ng-container>
+                    </select>
+                    <div style="margin-top: 5px; margin-bottom: 5px">
+                      <button type="submit" class="btn btn-secondary" style="margin: 0 auto; display: block" [disabled]="!salaForm.valid">Assigna</button>
+                    </div>
+                  </form>
+                </td>
+              </ng-template>
+            </tr>
+          </ng-container>
+        </tbody>
+      </table>
+    </div>
   </div>
 </div>
