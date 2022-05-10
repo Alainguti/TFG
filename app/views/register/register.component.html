@@ -22,7 +22,14 @@
         </div>
         <div class="mb-3">
           <label>Contrasenya</label>
-          <input type="password" class="form-control" formControlName="password">
+          <input type={{fieldType}} class="form-control" formControlName="password">
+        </div>
+        <div class="mb-3">
+          <label>Confirma contrasenya</label>
+          <input type={{fieldType}} class="form-control" formControlName="password_confirm">
+        </div>
+        <div class="mb-3">
+          <input type="checkbox" (click)="showPassword()">Mostra contrasenyes
         </div>
         <div class="mb-3">
           <label>Codi del curs</label>

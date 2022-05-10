@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, ViewChild, ElementRef } from '@angular/core';
 import {Router} from "@angular/router";
 import {AngularFireAuth} from "@angular/fire/compat/auth";
 import {AuthenticationService} from "../../../services/authentication.service";
@@ -15,6 +15,7 @@ export class GestioUsuarisComponent implements OnInit {
 
   usuaris: Usuari[] = []
   registerForm: FormGroup
+  fieldType:string = 'password'
 
   constructor(
     private router: Router,
@@ -24,7 +25,7 @@ export class GestioUsuarisComponent implements OnInit {
   ) {
     this.registerForm = new FormGroup({
       mail: new FormControl('', [Validators.required, Validators.email]),
-      password: new FormControl('', [Validators.required]),
+      password: new FormControl('', [Validators.required, Validators.minLength(6)]),
       name: new FormControl('', [Validators.required]),
       second_name: new FormControl('', [Validators.required]),
       third_name: new FormControl(''),
@@ -69,9 +70,20 @@ export class GestioUsuarisComponent implements OnInit {
         }
         this.fbService.addUser(user).then(() => {
           this.authService.signOut()
+        }).catch(function () {
+          window.alert('Dades incorrectes')
         })
       }
     })
+  }
+
+  showPassword() {
+    if(this.fieldType === 'password') {
+      this.fieldType = 'text'
+    }
+    else {
+      this.fieldType = 'password'
+    }
   }
 
 }

@@ -41,7 +41,10 @@
             </div>
             <div class="mb-3">
               <label>Contrasenya</label>
-              <input type="password" class="form-control" formControlName="password">
+              <input type= {{fieldType}} class="form-control" formControlName="password" id="password">
+            </div>
+            <div class="mb-3">
+              <input type="checkbox" (click)="showPassword()">Mostra contrasenya
             </div>
             <div class="mb-3">
               <label>Rol</label>

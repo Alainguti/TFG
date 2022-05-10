@@ -17,6 +17,7 @@ export class RegisterComponent implements OnInit {
   registerForm: FormGroup
   user: Usuari
   code?: string
+  fieldType:string = 'password'
 
   constructor(
     private router: Router,
@@ -28,6 +29,7 @@ export class RegisterComponent implements OnInit {
     this.registerForm = new FormGroup({
       mail: new FormControl('', [Validators.required, Validators.email]),
       password: new FormControl('', [Validators.required, Validators.minLength(6)]),
+      password_confirm: new FormControl('', [Validators.required, Validators.minLength(6)]),
       name: new FormControl('', [Validators.required]),
       second_name: new FormControl('', [Validators.required]),
       third_name: new FormControl(''),
@@ -53,28 +55,42 @@ export class RegisterComponent implements OnInit {
 
   createUser() {
     if(this.registerForm.value.code == this.code){
-      this.authService.signUpWithEmail(this.registerForm.value.mail, this.registerForm.value.password, this.registerForm.value.name).then(cred => {
-        if(cred.user) {
-          this.user.name = this.registerForm.value.name
-          this.user.second_name = this.registerForm.value.second_name
-          this.user.third_name = this.registerForm.value.third_name
-          this.user.uid = cred.user.uid
-          this.user.mail = this.registerForm.value.mail
-          this.fbService.addUser(this.user).then(() =>
-            this.router.navigate(['/login'])
-          )
-        }
-      }).catch(function() {
-        window.alert("Dades incorrectes");
-      });
+      if(this.registerForm.value.password_confirm == this.registerForm.value.password) {
+        this.authService.signUpWithEmail(this.registerForm.value.mail, this.registerForm.value.password, this.registerForm.value.name).then(cred => {
+          if(cred.user) {
+            this.user.name = this.registerForm.value.name
+            this.user.second_name = this.registerForm.value.second_name
+            this.user.third_name = this.registerForm.value.third_name
+            this.user.uid = cred.user.uid
+            this.user.mail = this.registerForm.value.mail
+            this.fbService.addUser(this.user).then(() =>
+              this.router.navigate(['/login'])
+            )
+          }
+        }).catch(function() {
+          window.alert("Dades incorrectes.");
+        });
+      }
+      else {
+        window.alert("La crontrasenya no coincideix.")
+      }
     }
-    else{
-      window.alert("Codi de curs incorrecte")
+    else {
+      window.alert("Codi de curs incorrecte.")
     }
   }
 
   getCode(): Observable<any> {
     return this.fbService.getCode()
+  }
+
+  showPassword() {
+    if(this.fieldType === 'password') {
+      this.fieldType = 'text'
+    }
+    else {
+      this.fieldType = 'password'
+    }
   }
 
 }
