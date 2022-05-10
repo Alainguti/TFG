@@ -25,7 +25,7 @@ export class GestioEstudiantsComponent implements OnInit {
     private fbService: FirebaseService
   ) {
     this.salaForm = new FormGroup({
-      id: new FormControl('', [Validators.required])
+      id: new FormControl([Validators.required])
     });
   }
 
@@ -61,7 +61,9 @@ export class GestioEstudiantsComponent implements OnInit {
   }
 
   assignaSala(uid:string) {
-    this.fbService.addUserToGroup(this.salaForm.value.id, uid).then(() => {
+    let aux = Number(this.salaForm.value.id)
+    console.log(aux)
+    this.fbService.addUserToGroup(aux, uid).then(() => {
         console.log('Assignat correctament.')
         window.location.reload()
       }
