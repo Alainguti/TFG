@@ -1,1 +1,39 @@
-<p>vista-global works!</p>
+<app-navbar></app-navbar>
+<div class="container">
+  <h1 class="text-center" style="margin-bottom: 20px;margin-top: 20px">Vista global</h1>
+  <div class="row" style="margin-top: 20px">
+    <div class="col-lg-4 col-md-3 border border-secondary rounded" style="margin-bottom: 40px;background-color: rgba(238, 238, 238,0.75)" *ngFor="let sala of salas">
+      <div>
+        <h2 class="text-center" style="margin-top: 10px">Sala {{sala.id}}</h2>
+        <h5 style="margin: 0;font-weight: bold">Mentor:</h5>
+        <ng-container *ngIf="sala.mentor === '';else mentor">
+          <p>Sense mentor</p>
+        </ng-container>
+        <ng-template #mentor>
+          <div style="margin-bottom: 10px;margin-top: 3px">
+            <p class="" style="margin: 0">{{mentors_dict.get(sala.mentor)}}</p>
+          </div>
+        </ng-template>
+        <div style="margin-top: 30px;margin-bottom: 30px">
+          <h5 style="font-weight: bold">Alumnes:</h5>
+          <ng-container *ngFor="let user of users_list">
+            <ng-container *ngIf="user.sala === sala.id">
+              <div style="margin-bottom: 10px;margin-top: 10px">
+                <p class="" style="margin: 0">{{user.name}} {{user.second_name}} {{user.third_name}}</p>
+              </div>
+            </ng-container>
+          </ng-container>
+        </div>
+        <div style="margin-top: 30px;margin-bottom: 30px">
+          <h5 style="font-weight: bold">Horaris:</h5>
+          <ng-container *ngFor="let horari of sala.horaris">
+            <div style="margin-bottom: 10px;margin-top: 10px">
+              <li>{{getHora(horari) | date:'dd-MM-yyyy h:mm a'}}</li>
+            </div>
+          </ng-container>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
