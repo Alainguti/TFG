@@ -53,14 +53,25 @@ export class GestioHorarisComponent implements OnInit {
 
   setHorari() {
     let hora = new Date(this.horariForm.value.hora)
-    this.fbService.setHorari(hora).then(() => {
-        console.log('Horari afegit correctament.')
-        window.location.reload()
+    let contain = false
+    for(let horari of this.horaris) {
+      if(hora.getTime() === horari.getTime()){
+        contain = true
       }
-    )
-      .catch(function(error) {
-        console.error("Error al afegir l'horari.", error);
-      });
+    }
+    if(!contain){
+      this.fbService.setHorari(hora).then(() => {
+          console.log('Horari afegit correctament.')
+          window.location.reload()
+        }
+      )
+        .catch(function(error) {
+          console.error("Error al afegir l'horari.", error);
+        });
+    }
+    else{
+      window.alert('Aquest horari ja és disponible')
+    }
   }
 
   eliminarHorari(hora: Date) {
