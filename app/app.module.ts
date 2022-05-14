@@ -27,6 +27,7 @@ import { GestioHorarisComponent } from './views/admin/gestio-horaris/gestio-hora
 import { HorarisMentorComponent } from './views/mentor/horaris-mentor/horaris-mentor.component';
 import { SalesMentorComponent } from './views/mentor/sales-mentor/sales-mentor.component';
 import { GestioEstudiantsComponent } from './views/admin/gestio-estudiants/gestio-estudiants.component';
+import { VistaGlobalComponent } from './views/admin/vista-global/vista-global.component';
 
 @NgModule({
   declarations: [
@@ -42,7 +43,8 @@ import { GestioEstudiantsComponent } from './views/admin/gestio-estudiants/gesti
     GestioHorarisComponent,
     HorarisMentorComponent,
     SalesMentorComponent,
-    GestioEstudiantsComponent
+    GestioEstudiantsComponent,
+    VistaGlobalComponent
   ],
   imports: [
     BrowserModule,

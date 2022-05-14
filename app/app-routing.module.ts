@@ -11,6 +11,7 @@ import {GestioHorarisComponent} from "./views/admin/gestio-horaris/gestio-horari
 import {HorarisMentorComponent} from "./views/mentor/horaris-mentor/horaris-mentor.component";
 import {SalesMentorComponent} from "./views/mentor/sales-mentor/sales-mentor.component";
 import {GestioEstudiantsComponent} from "./views/admin/gestio-estudiants/gestio-estudiants.component";
+import {VistaGlobalComponent} from "./views/admin/vista-global/vista-global.component";
 
 const routes: Routes = [
   { path: '', component: HomeComponent},
@@ -20,6 +21,7 @@ const routes: Routes = [
   { path: 'admin/gestio_usuaris', component: GestioUsuarisComponent},
   { path: 'admin/gestio_horaris', component: GestioHorarisComponent},
   { path: 'admin/gestio_estudiants', component: GestioEstudiantsComponent},
+  { path: 'admin/vista_global', component: VistaGlobalComponent},
   { path: 'mentor/gestio_horaris', component: HorarisMentorComponent},
   { path: 'mentor/gestio_sales', component: SalesMentorComponent},
   { path: 'sales', component: LlistaSalesComponent},
