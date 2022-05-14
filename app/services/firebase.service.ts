@@ -15,9 +15,7 @@ export class FirebaseService {
     private firebase: AngularFirestore
   ) { }
 
-  addUser(user: Usuari){
-    return this.firebase.collection('Usuaris').doc(user.uid).set(user)
-  }
+  //GETTERS
 
   getUser(uid: string): Observable<any>{
     return this.firebase.collection('Usuaris').doc(uid).get()
@@ -27,7 +25,7 @@ export class FirebaseService {
     return this.firebase.collection('Usuaris').get()
   }
 
-  getCode() {
+  getCredentials() {
     return this.firebase.collection('Credenciales').doc('cred').get()
   }
 
@@ -41,6 +39,16 @@ export class FirebaseService {
 
   getHoraris() {
     return this.firebase.collection('Horaris').get()
+  }
+
+  getHorariId(hora: Date) {
+    return this.firebase.collection('Horaris', ref => ref.where('hora', '==', hora)).get()
+  }
+
+  //SETTERS
+
+  addUser(user: Usuari){
+    return this.firebase.collection('Usuaris').doc(user.uid).set(user)
   }
 
   crearSala(sala:Sala) {
@@ -71,16 +79,14 @@ export class FirebaseService {
     return this.firebase.collection('Usuaris').doc(user_uid).update({sala: sala_id})
   }
 
+  //DELETE
+
   deleteUserFromGroup(uid: string) {
     return this.firebase.collection('Usuaris').doc(uid).update({sala: -1})
   }
 
   deleteMentorFromGroup(sala_id: number) {
     return this.firebase.collection('Sales').doc(sala_id.toString()).update({mentor: ''})
-  }
-
-  getHorariId(hora: Date) {
-    return this.firebase.collection('Horaris', ref => ref.where('hora', '==', hora)).get()
   }
 
   deleteHorari(id: string) {

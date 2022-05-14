@@ -54,7 +54,7 @@ export class HomeComponent implements OnInit {
   }
 
   getCode(): Observable<any> {
-    return this.fbService.getCode()
+    return this.fbService.getCredentials()
   }
 
   changeCode() {
