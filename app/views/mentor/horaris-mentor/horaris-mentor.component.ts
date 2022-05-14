@@ -83,4 +83,14 @@ export class HorarisMentorComponent implements OnInit {
       });
   }
 
+  containsHorari(horari: Date): boolean {
+    let aux = false
+    for(let hora of this.horaris_mentor) {
+      if(hora.getTime() === horari.getTime()) {
+        aux = true
+      }
+    }
+    return aux
+  }
+
 }
