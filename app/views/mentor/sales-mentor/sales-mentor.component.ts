@@ -36,9 +36,11 @@ export class SalesMentorComponent implements OnInit {
         })
         this.fbService.getSales().subscribe((docs:any) => {
           docs.forEach((doc: any) => {
-            if(doc.data().mentor === this.uid) {
-              this.salas.push(doc.data())
-              this.salas = _.sortBy(this.salas, 'id')
+            for(let mentor of doc.data().mentors) {
+              if(mentor === this.uid) {
+                this.salas.push(doc.data())
+                this.salas = _.sortBy(this.salas, 'id')
+              }
             }
           })
         })

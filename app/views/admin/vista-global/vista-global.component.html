@@ -6,12 +6,12 @@
       <div>
         <h2 class="text-center" style="margin-top: 10px">Sala {{sala.id}}</h2>
         <h5 style="margin: 0;font-weight: bold">Mentor:</h5>
-        <ng-container *ngIf="sala.mentor === '';else mentor">
+        <ng-container *ngIf="sala.mentors.length == 0;else mentor">
           <p>Sense mentor</p>
         </ng-container>
         <ng-template #mentor>
           <div style="margin-bottom: 10px;margin-top: 3px">
-            <p class="" style="margin: 0">{{mentors_dict.get(sala.mentor)}}</p>
+            <p *ngFor="let mentor of sala.mentors" class="" style="margin: 0">{{mentors_dict.get(mentor)}}</p>
           </div>
         </ng-template>
         <div style="margin-top: 30px;margin-bottom: 30px">

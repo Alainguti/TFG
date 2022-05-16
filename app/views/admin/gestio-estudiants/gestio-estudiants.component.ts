@@ -62,7 +62,6 @@ export class GestioEstudiantsComponent implements OnInit {
 
   assignaSala(uid:string) {
     let aux = Number(this.salaForm.value.id)
-    console.log(aux)
     this.fbService.addUserToGroup(aux, uid).then(() => {
         console.log('Assignat correctament.')
         window.location.reload()

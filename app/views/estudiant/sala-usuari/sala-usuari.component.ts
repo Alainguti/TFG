@@ -16,19 +16,11 @@ export class SalaUsuariComponent implements OnInit {
 
   user?: Usuari
   companys: any[] = []
-  mentor: Usuari = {
-    name: '',
-    uid: '',
-    second_name:'',
-    third_name:'',
-    rol:'',
-    sala: -1,
-    mail: '',
-    horaris: []
-  }
+  mentors: Usuari[] = []
   sala: number = -1
   sala_horaris: Date[] = []
   horaris_mentor: Date[] = []
+  sub: any
 
   constructor(
     private router: Router,
@@ -43,9 +35,9 @@ export class SalaUsuariComponent implements OnInit {
         this.router.navigate(['/login'])
       }
     })
-    this.fireAuth.authState.subscribe(cred => {
+    this.sub = this.fireAuth.authState.subscribe(cred => {
       if(cred?.uid) {
-        this.fbService.getUser(cred?.uid).subscribe(data => {
+        this.fbService.getUser(cred?.uid).subscribe((data:any) => {
           this.user = data.data()
           this.fbService.getSala(data.data().sala).subscribe((sala:any) => {
             this.sala = sala.id
@@ -54,7 +46,6 @@ export class SalaUsuariComponent implements OnInit {
               this.sala_horaris.push(h)
               this.sala_horaris = _.sortBy(this.sala_horaris)
             }
-            console.log(this.sala_horaris)
           })
           this.fbService.getUsuaris().subscribe((users: any) => {
             users.forEach((user: any) => {
@@ -68,12 +59,14 @@ export class SalaUsuariComponent implements OnInit {
               else if(user.data().rol == "mentor"){
                 if(data.data().sala){
                   this.fbService.getSala(data.data().sala).subscribe((info:any) => {
-                    if(user.data().uid == info.data().mentor){
-                      this.mentor = user.data()
-                      for(let hora of user.data().horaris) {
-                        let h = new Date(hora.seconds*1000)
-                        this.horaris_mentor.push(h)
-                        this.horaris_mentor = _.sortBy(this.horaris_mentor)
+                    for(let mentor of info.data().mentors) {
+                      if(user.data().uid == mentor){
+                        this.mentors.push(user.data())
+                        for(let hora of user.data().horaris) {
+                          let h = new Date(hora.seconds*1000)
+                          this.horaris_mentor.push(h)
+                          this.horaris_mentor = _.sortBy(this.horaris_mentor)
+                        }
                       }
                     }
                   })
@@ -84,6 +77,10 @@ export class SalaUsuariComponent implements OnInit {
         })
       }
     })
+  }
+
+  ngOnDestroy(): void {
+    this.sub.unsubscribe()
   }
 
   escollirHorari(horari: Date) {

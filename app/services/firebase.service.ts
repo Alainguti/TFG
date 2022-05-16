@@ -5,6 +5,7 @@ import {map, Observable, Timestamp} from "rxjs";
 import { collection, query, where, getDocs } from "firebase/firestore";
 import {Sala} from "../model/sala";
 import firebase from "firebase/compat";
+import {arrayRemove, arrayUnion} from "@angular/fire/firestore";
 
 @Injectable({
   providedIn: 'root'
@@ -60,7 +61,7 @@ export class FirebaseService {
   }
 
   setMentor(uid: string, sala_id: number) {
-    return this.firebase.collection('Sales').doc(sala_id.toString()).update({mentor: uid})
+    return this.firebase.collection('Sales').doc(sala_id.toString()).update({mentors: arrayUnion(uid)})
   }
 
   setHorari(hora: Date) {
@@ -85,8 +86,8 @@ export class FirebaseService {
     return this.firebase.collection('Usuaris').doc(uid).update({sala: -1})
   }
 
-  deleteMentorFromGroup(sala_id: number) {
-    return this.firebase.collection('Sales').doc(sala_id.toString()).update({mentor: ''})
+  deleteMentorFromGroup(sala_id: number, mentor: string) {
+    return this.firebase.collection('Sales').doc(sala_id.toString()).update({mentors: arrayRemove(mentor)})
   }
 
   deleteHorari(id: string) {

@@ -6,7 +6,7 @@
       <div>
         <h2 class="text-center" style="margin-top: 10px">Sala {{sala.id}}</h2>
         <h5 style="margin: 0;font-weight: bold">Mentor:</h5>
-        <ng-container *ngIf="sala.mentor === '';else mentor">
+        <ng-container *ngIf="sala.mentors.length == 0;else mentor">
           <form [formGroup]="mentorForm" (ngSubmit)="assignaMentor(sala.id)" novalidate>
             <select class="form-select" formControlName="nom" autofocus>
               <option></option>
@@ -19,7 +19,22 @@
         </ng-container>
         <ng-template #mentor>
           <div style="margin-bottom: 10px;margin-top: 3px">
-            <p class="" style="margin: 0">{{mentors_dict.get(sala.mentor)}} <button style="float: right;display: block" class="btn btn-danger btn-sm" (click)="deleteMentorFromGroup(sala.id)">Expulsar</button></p>
+            <ng-container *ngFor="let mentor of sala.mentors">
+              <p class="" style="margin: 0">{{mentors_dict.get(mentor)}} <button style="float: right;display: block" class="btn btn-danger btn-sm" (click)="deleteMentorFromGroup(sala.id, mentor)">Expulsar</button></p>
+            </ng-container>
+          </div>
+          <div>
+            <form [formGroup]="auxForm" (ngSubmit)="assignaMentor(sala.id)" novalidate>
+              <select class="form-select" formControlName="nom" autofocus>
+                <option></option>
+                <ng-container *ngFor="let mentor of mentors_list">
+                  <option *ngIf="!sala.mentors.includes(mentor.uid)" value="{{mentor.uid}}">{{mentor.name}} {{mentor.second_name}}<ng-container *ngIf="mentor.third_name != ''"> {{mentor.third_name}}</ng-container></option>
+                </ng-container>
+              </select>
+              <div style="margin-top: 5px; margin-bottom: 5px">
+                <button type="submit" class="btn btn-secondary" style="margin: 0 auto; display: block" [disabled]="!auxForm.valid">Assigna</button>
+              </div>
+            </form>
           </div>
         </ng-template>
         <div style="margin-top: 30px;margin-bottom: 30px">

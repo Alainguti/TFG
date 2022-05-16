@@ -21,8 +21,8 @@
         <div class="col-12 border border-3 border-secondary rounded" style="margin-bottom: 20px;background-color: rgba(238, 238, 238,0.75)">
           <div style="margin:10px">
             <h5>El teu mentor:</h5>
-            <ng-container *ngIf="mentor.name != '';else no_mentor">
-              <ul><li>{{mentor.name}} {{mentor.second_name}} {{mentor.third_name}} - {{mentor.mail}}</li></ul>
+            <ng-container *ngIf="mentors.length > 0;else no_mentor">
+              <ul><li *ngFor="let mentor of mentors">{{mentor.name}} {{mentor.second_name}} {{mentor.third_name}} - {{mentor.mail}}</li></ul>
             </ng-container>
             <ng-template #no_mentor>
               <p>Encara no se us ha assignat cap mentor</p>
@@ -34,7 +34,7 @@
         <div class="col border border-3 border-secondary rounded" style="margin-bottom: 20px;background-color: rgba(238, 238, 238,0.75)">
           <div style="margin:10px">
             <h5 class="text-center">Horaris disponibles del teu mentor:</h5>
-            <ng-container *ngIf="mentor.name != '';else no_mentor">
+            <ng-container *ngIf="mentors.length > 0;else no_mentor">
               <ng-container *ngFor="let horari of horaris_mentor">
                 <div style="margin-bottom: 10px;margin-top: 3px">
                   <li>{{horari | date:'dd-MM-yyyy h:mm a'}}

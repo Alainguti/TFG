@@ -12,7 +12,7 @@
       <div class="col-4 border border-secondary rounded" style="margin-bottom: 20px;background-color: rgba(238, 238, 238,0.75)">
         <div>
           <h2 class="text-center" style="margin: 10px">Sala {{sala.id}}</h2>
-          <p style="margin: 0;font-weight: bold">Mentor: </p><p>{{mentors_dict.get(sala.mentor)}}</p>
+          <p style="margin: 0;font-weight: bold">Mentor: </p><p *ngFor="let mentor of sala.mentors">{{mentors_dict.get(mentor)}}</p>
           <p style="font-weight: bold;margin: 0">Alumnes:</p>
           <ng-container *ngFor="let i of users_list">
             <ng-container *ngIf="i.sala === sala.id">

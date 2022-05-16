@@ -19,6 +19,7 @@ export class GestioSalesComponent implements OnInit {
   salas: Sala[] = []
   mentors_list: any[] = []
   mentorForm: FormGroup
+  auxForm: FormGroup
   mentors_dict: Map<string, string> = new Map
 
   constructor(
@@ -28,6 +29,9 @@ export class GestioSalesComponent implements OnInit {
     private fbService: FirebaseService
   ) {
     this.mentorForm = new FormGroup({
+      nom: new FormControl('', [Validators.required])
+    });
+    this.auxForm = new FormGroup({
       nom: new FormControl('', [Validators.required])
     });
   }
@@ -68,7 +72,7 @@ export class GestioSalesComponent implements OnInit {
 
   crearSala(){
     const len = this.salas.length + 1
-    const sala: Sala = {id: len, mentor:'', horaris: []}
+    const sala: Sala = {id: len, mentors:[], horaris: []}
     this.fbService.crearSala(sala).then(() => {
       console.log('Sala creada correctament.')
       window.location.reload()
@@ -90,8 +94,8 @@ export class GestioSalesComponent implements OnInit {
       });
   }
 
-  deleteMentorFromGroup(sala_id: number) {
-    this.fbService.deleteMentorFromGroup(sala_id).then(() => {
+  deleteMentorFromGroup(sala_id: number, mentor: string) {
+    this.fbService.deleteMentorFromGroup(sala_id, mentor).then(() => {
         console.log('Eliminat correctament.')
         window.location.reload()
       }
@@ -102,16 +106,33 @@ export class GestioSalesComponent implements OnInit {
   }
 
   assignaMentor(sala_id: number) {
-    for(let entry of this.mentors_dict.entries()) {
-      if(entry[1] === this.mentorForm.value.nom){
-        this.fbService.setMentor(entry[0], sala_id).then(() => {
-            console.log('Assignat correctament.')
-            window.location.reload()
-          }
-        )
-          .catch(function(error) {
-            console.error("Error al assignar.", error);
-          });
+    if(this.mentorForm.valid) {
+      for(let entry of this.mentors_dict.entries()) {
+        console.log(entry)
+        if(entry[1] === this.mentorForm.value.nom){
+          this.fbService.setMentor(entry[0], sala_id).then(() => {
+              console.log('Assignat correctament.')
+              window.location.reload()
+            }
+          )
+            .catch(function(error) {
+              console.error("Error al assignar.", error);
+            });
+        }
+      }
+    }
+    else if(this.auxForm.valid) {
+      for(let entry of this.mentors_dict.entries()) {
+        if(entry[0] === this.auxForm.value.nom){
+          this.fbService.setMentor(entry[0], sala_id).then(() => {
+              console.log('Assignat correctament.')
+              window.location.reload()
+            }
+          )
+            .catch(function(error) {
+              console.error("Error al assignar.", error);
+            });
+        }
       }
     }
   }

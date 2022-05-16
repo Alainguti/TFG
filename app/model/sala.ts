@@ -1,5 +1,5 @@
 export interface Sala {
   id: number
-  mentor: string
+  mentors: string[]
   horaris: Date[]
 }
