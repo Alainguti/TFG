@@ -18,10 +18,8 @@
           </form>
         </ng-container>
         <ng-template #mentor>
-          <div style="margin-bottom: 10px;margin-top: 3px">
-            <ng-container *ngFor="let mentor of sala.mentors">
-              <p class="" style="margin: 0">{{mentors_dict.get(mentor)}} <button style="float: right;display: block" class="btn btn-danger btn-sm" (click)="deleteMentorFromGroup(sala.id, mentor)">Expulsar</button></p>
-            </ng-container>
+          <div *ngFor="let mentor of sala.mentors" style="margin-bottom: 10px;margin-top: 3px">
+            <p class="" style="margin: 0">{{mentors_dict.get(mentor)}} <button style="float: right;display: block" class="btn btn-danger btn-sm" (click)="deleteMentorFromGroup(sala.id, mentor)">Expulsar</button></p>
           </div>
           <div>
             <form [formGroup]="auxForm" (ngSubmit)="assignaMentor(sala.id)" novalidate>

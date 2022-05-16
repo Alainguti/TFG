@@ -33,7 +33,7 @@
       <div class="row">
         <div class="col border border-3 border-secondary rounded" style="margin-bottom: 20px;background-color: rgba(238, 238, 238,0.75)">
           <div style="margin:10px">
-            <h5 class="text-center">Horaris disponibles del teu mentor:</h5>
+            <h3 class="text-center">Horaris disponibles del teu mentor:</h3>
             <ng-container *ngIf="mentors.length > 0;else no_mentor">
               <ng-container *ngFor="let horari of horaris_mentor">
                 <div style="margin-bottom: 10px;margin-top: 3px">
@@ -51,7 +51,7 @@
         <div class="col-1"></div>
         <div class="col border border-3 border-secondary rounded" style="margin-bottom: 20px;background-color: rgba(238, 238, 238,0.75)">
           <div style="margin: 10px">
-            <h3 style="margin: 10px">Horaris escollits pel teu grup:</h3>
+            <h3 class="text-center" style="margin: 10px">Horaris escollits pel teu grup:</h3>
             <ul>
               <ng-container *ngFor="let horari of sala_horaris">
                 <div style="margin-bottom: 10px;margin-top: 3px">
