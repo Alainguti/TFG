@@ -84,32 +84,28 @@ export class SalaUsuariComponent implements OnInit {
   }
 
   escollirHorari(horari: Date) {
-    if(this.sala_horaris){
-      this.sala_horaris.push(horari)
-      this.fbService.setHorariSala(this.sala_horaris, this.sala).then(() => {
-          console.log('Horari escollit correctament.')
-        }
-      )
-        .catch(function(error) {
-          console.error("Error al escollit l'horari.", error);
-        });
-    }
+    this.sala_horaris.push(horari)
+    this.fbService.setHorariSala(this.sala_horaris, this.sala).then(() => {
+        console.log('Horari escollit correctament.')
+      }
+    )
+      .catch(function(error) {
+        console.error("Error al escollit l'horari.", error);
+      });
   }
 
   eliminarHorari(horari: Date) {
-    if(this.sala_horaris) {
-      this.sala_horaris.forEach( (item, index) => {
-        if(item === horari) this.sala_horaris.splice(index,1);
-        this.sala_horaris = _.sortBy(this.sala_horaris)
+    this.sala_horaris.forEach( (item, index) => {
+      if(item === horari) this.sala_horaris.splice(index,1);
+      this.sala_horaris = _.sortBy(this.sala_horaris)
+    });
+    this.fbService.setHorariSala(this.sala_horaris, this.sala).then(() => {
+        console.log('Horari eliminat correctament.')
+      }
+    )
+      .catch(function(error) {
+        console.error("Error al eliminar l'horari.", error);
       });
-      this.fbService.setHorariSala(this.sala_horaris, this.sala).then(() => {
-          console.log('Horari eliminat correctament.')
-        }
-      )
-        .catch(function(error) {
-          console.error("Error al eliminar l'horari.", error);
-        });
-    }
   }
 
 }
