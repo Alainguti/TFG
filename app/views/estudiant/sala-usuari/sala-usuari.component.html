@@ -38,7 +38,7 @@
               <ng-container *ngFor="let horari of horaris_mentor">
                 <div style="margin-bottom: 10px;margin-top: 3px">
                   <li>{{horari | date:'dd-MM-yyyy h:mm a'}}
-                    <button style="float: right;display: block" class="btn btn-secondary btn-sm" (click)="escollirHorari(horari)">Escollir</button>
+                    <button *ngIf="!containsHorari(horari)" style="float: right;display: block" class="btn btn-secondary btn-sm" (click)="escollirHorari(horari)">Escollir</button>
                   </li>
                 </div>
               </ng-container>

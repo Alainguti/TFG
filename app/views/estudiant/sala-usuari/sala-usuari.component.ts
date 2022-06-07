@@ -108,4 +108,14 @@ export class SalaUsuariComponent implements OnInit {
       });
   }
 
+  containsHorari(horari: Date): boolean {
+    let aux = false
+    for(let hora of this.sala_horaris) {
+      if(hora.getTime() === horari.getTime()) {
+        aux = true
+      }
+    }
+    return aux
+  }
+
 }
